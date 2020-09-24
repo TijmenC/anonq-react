@@ -14,7 +14,7 @@ function Navigationbar() {
         AnonQ
       </Navbar.Brand>
       <Nav.Item className="ml-auto">
-        <Button variant="outline-primary">Search</Button>
+        <Button variant="dark">Ask A Question</Button>
         </Nav.Item>
       </Nav>
     </Navbar>
