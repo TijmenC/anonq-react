@@ -1,7 +1,15 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styling/Question.css'
-import { Container, Row, Col, Image, Figure, Button } from 'react-bootstrap';
+// import report from '../images/report.png';
+import { Row, Col, Image, Figure, Button } from 'react-bootstrap';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    NavLink
+  } from "react-router-dom";
 
 function Question() {
     return (
@@ -33,11 +41,13 @@ function Question() {
                 <Col>
                     <div className="float-left">
                         <figure>
+                        <Link to="/">      
                             <Figure.Image
                                 width={50}
                                 height={50}
                                 src="//placehold.it/50"
                             />
+                        </Link>
                             <figcaption class="figure-caption text-middle">Report</figcaption>
                         </figure>
                     </div >
@@ -45,12 +55,14 @@ function Question() {
                 <Col>
                     <div className="float-right">
                         <figure>
+                        <Link to="/">      
                             <Figure.Image
                                 width={50}
                                 height={50}
                                 src="//placehold.it/50"
                             />
-                            <figcaption class="figure-caption text-middle">Skip</figcaption>
+                        </Link>
+                        <figcaption class="figure-caption text-middle">Skip</figcaption>
                         </figure>
                     </div>
                 </Col>
