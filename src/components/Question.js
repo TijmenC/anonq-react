@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styling/Question.css'
 // import report from '../images/report.png';
@@ -9,9 +10,24 @@ import {
     Route,
     Link,
     NavLink
-  } from "react-router-dom";
+} from "react-router-dom";
+
+const QuestionUri = "https://localhost:44348/api/GetQuestions";
+
+
+
 
 function Question() {
+
+    const [questionList, setQuestionList] = useState([]);
+
+    useEffect(() => {
+        axios.get(QuestionUri).then((res) => {
+            const newQuestionList = res.data;
+            setQuestionList(newQuestionList);
+        });
+    }, []);
+    
     return (
         <div className="rounded container">
             <Row className="justify-content-md-left">
@@ -41,13 +57,13 @@ function Question() {
                 <Col>
                     <div className="float-left">
                         <figure>
-                        <Link to="/">      
-                            <Figure.Image
-                                width={50}
-                                height={50}
-                                src="//placehold.it/50"
-                            />
-                        </Link>
+                            <Link to="/">
+                                <Figure.Image
+                                    width={50}
+                                    height={50}
+                                    src="//placehold.it/50"
+                                />
+                            </Link>
                             <figcaption class="figure-caption text-middle">Report</figcaption>
                         </figure>
                     </div >
@@ -55,14 +71,14 @@ function Question() {
                 <Col>
                     <div className="float-right">
                         <figure>
-                        <Link to="/">      
-                            <Figure.Image
-                                width={50}
-                                height={50}
-                                src="//placehold.it/50"
-                            />
-                        </Link>
-                        <figcaption class="figure-caption text-middle">Skip</figcaption>
+                            <Link to="/">
+                                <Figure.Image
+                                    width={50}
+                                    height={50}
+                                    src="//placehold.it/50"
+                                />
+                            </Link>
+                            <figcaption class="figure-caption text-middle">Skip</figcaption>
                         </figure>
                     </div>
                 </Col>
