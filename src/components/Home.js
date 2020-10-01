@@ -1,8 +1,10 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Question from './Question'
 
 function Home() {
     return (
-<div>Home</div>
+<div><Question /></div>
     );
 }
 export default Home;

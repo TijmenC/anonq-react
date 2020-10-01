@@ -1,0 +1,17 @@
+.btn-primary  {
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    outline: none !important;
+}
+.btn-primary:hover {
+    background-color:black; 
+    color: gray;
+    outline: none !important;
+  }
+.report {
+    text-align: left;
+}
+.skip {
+    text-align: right;
+}

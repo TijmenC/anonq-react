@@ -14,7 +14,7 @@ import {
 
 function Navigationbar() {
   return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar fixed="top" bg="dark" variant="dark">
       <Nav className="container-fluid">
         <Navbar.Brand href="#home">
           <img src={logo} width="100" height="50" className="d-inline-block align-top" />
