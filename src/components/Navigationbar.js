@@ -21,10 +21,8 @@ function Navigationbar() {
         AnonQ
       </Navbar.Brand>
         <Nav.Item className="ml-auto">
-          <Router>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/about/">About</NavLink>
-          </Router>
+            <Link to="/">Home</Link>
+            <Link to="/QuestionForm">QuestionForm</Link>
           {/* <Button variant="dark">Ask A Question</Button> */}
         </Nav.Item>
       </Nav>

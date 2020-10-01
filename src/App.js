@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Navigationbar from './components/Navigationbar';
 import QuestionForm from './components/QuestionForm';
 import Home from './components/Home';
 import {
@@ -16,12 +17,10 @@ import {
 function App() {
   return (
     <div className="App">
-      <Router>
       <Switch>
-          <Route exact path="/" component={Home}/>
-          <Route path="/about" component={QuestionForm}/>
-        </Switch>
-        </Router>
+      <Route exact path='/' component={Home} />
+      <Route exact path='/QuestionForm' component={QuestionForm}/>
+    </Switch>
     </div>
   );
 }
