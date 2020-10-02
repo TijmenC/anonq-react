@@ -12,9 +12,7 @@ import {
     NavLink
 } from "react-router-dom";
 
-const QuestionUri = "https://localhost:44348/api/GetQuestions";
-
-
+const QuestionUri = "https://localhost:44348/api/Question/";
 
 
 function Question() {
