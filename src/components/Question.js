@@ -12,25 +12,14 @@ import {
     NavLink
 } from "react-router-dom";
 
-const QuestionUri = "https://localhost:44348/api/Question/";
 
 
-function Question() {
-
-    const [questionList, setQuestionList] = useState([]);
-
-    useEffect(() => {
-        axios.get(QuestionUri).then((res) => {
-            const newQuestionList = res.data;
-            setQuestionList(newQuestionList);
-        });
-    }, []);
-    
+function Question( { question }) {
     return (
         <div className="rounded container">
             <Row className="justify-content-md-left">
                 <Col md sm="8">
-                    <b><h3>What should I do about my crazy ex?</h3></b>
+                    <b><h3>{question.title}</h3></b>
                 </Col>
             </Row>
             <Row className="justify-content-md-left">
