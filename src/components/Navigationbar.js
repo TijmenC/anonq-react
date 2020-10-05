@@ -16,14 +16,16 @@ function Navigationbar() {
   return (
     <Navbar fixed="top" bg="dark" variant="dark">
       <Nav className="container-fluid">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand>
+        <Link to="/">
           <img src={logo} width="100" height="50" className="d-inline-block align-top" />
+          </Link>
         AnonQ
       </Navbar.Brand>
         <Nav.Item className="ml-auto">
             <Link to="/">Home </Link>
             |
-            <Link to="/QuestionForm"> QuestionForm</Link>
+            <Link to="/QuestionForm"> Post A Question</Link>
           {/* <Button variant="dark">Ask A Question</Button> */}
         </Nav.Item>
       </Nav>
