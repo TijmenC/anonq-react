@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from "axios";
 import Question from './Question'
 
-const QuestionUri = "https://localhost:44348/api/Question/";
+const QuestionUri = "https://localhost:44348/api/Question/1";
 
 function Home() {
     const [questionList, setQuestionList] = useState([]);
@@ -17,9 +17,9 @@ function Home() {
     }, []);
     return (
         <div>
-            {questionList.map((question) => (
-                <Question key={question.id} question={question} />
-            ))}
+           
+                <Question question={questionList} />
+
         </div>
     );
 }

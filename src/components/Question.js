@@ -24,8 +24,7 @@ function Question( { question }) {
             </Row>
             <Row className="justify-content-md-left">
                 <Col md sm="12">
-                    <b><h8>So recently my ex came up to me and said that I stunk and she repeatly started stabbing me.
-                        It was not a fun experience and I left her home and I don't know what to do. Should i call the police?</h8></b>
+                    <b><h8>{question.description}</h8></b>
                 </Col>
             </Row>
             <Row className="justify-content-md-left">
