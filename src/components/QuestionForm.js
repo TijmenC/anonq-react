@@ -1,10 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import { Row, Col, Image, Figure, Button, Form, Checkbox } from 'react-bootstrap';
+import axios from "axios";
+
+const QuestionUri = "https://localhost:44348/api/Question/";
 
 function QuestionForm() {
+    const [Question, setQuestion] = useState([
+        {
+            title: '',
+            description: '',
+            tag: '',
+            commentsEnabled: ''
+        }
+    ]);
+
+    const handleChange = (event) => {
+        setQuestion({ ...Question, [event.target.name]: event.target.value })
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        axios.post({ QuestionUri }, Question)
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+            })
+    };
+
+
     return (
         <div className="rounded container">
-            <Form >
+            <Form onSubmit={handleSubmit} >
                 <Row className="justify-content-md-center">
                     <Col md="8">
                         <h2>Post A Question</h2>
@@ -13,9 +39,9 @@ function QuestionForm() {
                 </Row>
                 <Row className="justify-content-md-center">
                     <Col md="8">
-                        <Form.Group controlId="Title">
+                        <Form.Group controlId="title">
                             <Form.Label><h4>Title</h4></Form.Label>
-                            <Form.Control placeholder="Enter Title" />
+                            <Form.Control placeholder="Enter Title" name="title" value={Question.title} onChange={handleChange} required />
                         </Form.Group>
                     </Col>
                 </Row>
@@ -41,8 +67,8 @@ function QuestionForm() {
                     <Col md="8">
                         <br />
                         <Form.Label><h4>Comments</h4></Form.Label>
-                            <Form.Check type="checkbox" id="EnableComments">
-                                <Form.Check.Input type="checkbox" isValid />
+                        <Form.Check type="checkbox" id="EnableComments">
+                            <Form.Check.Input type="checkbox" isValid />
                                  Enable
                             </Form.Check>
                     </Col>
