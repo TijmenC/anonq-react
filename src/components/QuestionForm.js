@@ -5,17 +5,17 @@ import axios from "axios";
 const QuestionUri = "https://localhost:44348/api/Question/";
 
 function QuestionForm() {
-    const [Question, setQuestion] = useState([
+    const [Question, setQuestion] = useState(
         {
             title: '',
             description: '',
             tag: '',
             commentsEnabled: ''
         }
-    ]);
+    );
 
     const handleChange = (event) => {
-        setQuestion({ ...Question, [event.target.name]: event.target.value })
+        setQuestion({ ...Question, [event.target.name]: event.target.value });
     };
 
     const handleSubmit = (e) => {
