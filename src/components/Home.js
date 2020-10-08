@@ -3,10 +3,13 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from "axios";
 import Question from './Question'
 
-const QuestionUri = "https://localhost:44348/api/Question/1";
+
+const id = 2;
+const QuestionUri = "https://localhost:44348/api/Question/" + {id};
 
 function Home() {
     const [questionList, setQuestionList] = useState([]);
+
 
     useEffect(() => {
         axios.get(QuestionUri).then((res) => {
@@ -17,9 +20,7 @@ function Home() {
     }, []);
     return (
         <div>
-           
                 <Question question={questionList} />
-
         </div>
     );
 }

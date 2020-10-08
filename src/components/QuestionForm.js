@@ -10,7 +10,7 @@ function QuestionForm() {
             title: '',
             description: '',
             tag: '',
-            commentsEnabled: ''
+            commentsenabled: ''
         }
     );
 
@@ -18,13 +18,13 @@ function QuestionForm() {
         setQuestion({ ...Question, [event.target.name]: event.target.value });
     };
 
+
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post({ QuestionUri }, Question)
-            .then(res => {
-                console.log(res);
-                console.log(res.data);
-            })
+        axios.post('https://localhost:44348/api/Question', Question).then((res) => {
+            console.log(res);
+            console.log(res.data);
+        })
     };
 
 
@@ -40,7 +40,7 @@ function QuestionForm() {
                 <Row className="justify-content-md-center">
                     <Col md="8">
                         <Form.Group controlId="title">
-                            <Form.Label><h4>Title</h4></Form.Label>
+                            <Form.Label><h4>title</h4></Form.Label>
                             <Form.Control placeholder="Enter Title" name="title" value={Question.title} onChange={handleChange} required />
                         </Form.Group>
                     </Col>
@@ -49,14 +49,14 @@ function QuestionForm() {
                     <Col md="8">
                         <Form.Group controlId="exampleForm.ControlTextarea1">
                             <Form.Label><h4>Description</h4></Form.Label>
-                            <Form.Control placeholder="Enter Description" as="textarea" rows="3" />
+                            <Form.Control placeholder="Enter Description" name="description" value={Question.description} onChange={handleChange} as="textarea" rows="3" />
                         </Form.Group>
                     </Col>
                 </Row>
                 <Row className="justify-content-md-center">
                     <Col md="8">
                         <Form.Label><h4>Tag</h4></Form.Label>
-                        <Form.Control as="select">
+                        <Form.Control as="select" name="tag" value={Question.tag} onChange={handleChange}>
                             <option>Personal</option>
                             <option>Relationship</option>
                             <option>Abuse</option>
@@ -66,9 +66,9 @@ function QuestionForm() {
                 <Row className="justify-content-md-center" key="checkbox">
                     <Col md="8">
                         <br />
-                        <Form.Label><h4>Comments</h4></Form.Label>
-                        <Form.Check type="checkbox" id="EnableComments">
-                            <Form.Check.Input type="checkbox" isValid />
+                            <Form.Label><h4>Comments</h4></Form.Label>
+                            <Form.Check type="checkbox" id="EnableComments">
+                                <Form.Check.Input type="checkbox" name='commentsenabled' value={Question.commentsenabled} onChange={handleChange} isValid />
                                  Enable
                             </Form.Check>
                     </Col>
