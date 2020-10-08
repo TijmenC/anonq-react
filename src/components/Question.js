@@ -57,13 +57,13 @@ function Question( { question }) {
                 <Col>
                     <div className="float-right">
                         <figure>
-                            <Link to="/">
+                        <a>
                                 <Figure.Image
                                     width={50}
                                     height={50}
                                     src="//placehold.it/50"
                                 />
-                            </Link>
+                            </a>
                             <figcaption class="figure-caption text-middle">Skip</figcaption>
                         </figure>
                     </div>

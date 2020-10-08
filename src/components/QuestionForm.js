@@ -68,7 +68,7 @@ function QuestionForm() {
                         <br />
                             <Form.Label><h4>Comments</h4></Form.Label>
                             <Form.Check type="checkbox" id="EnableComments">
-                                <Form.Check.Input type="checkbox" name='commentsenabled' value={Question.commentsenabled} onChange={handleChange} isValid />
+                                <Form.Check.Input type="checkbox" isValid />
                                  Enable
                             </Form.Check>
                     </Col>
