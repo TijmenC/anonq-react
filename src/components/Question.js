@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styling/Question.css'
-// import report from '../images/report.png';
+import skip from '../images/skip.png'
+import report from '../images/report.png';
 import { Row, Col, Image, Figure, Button } from 'react-bootstrap';
 import {
     BrowserRouter as Router,
@@ -31,42 +32,12 @@ function Question( { question }) {
                 <Col>
                     <br />
                     <Button variant="primary" size="lg" block>
-                        Report her to the police
+                        Answer 1
                     </Button>
 
                     <Button variant="primary" size="lg" block>
-                        Forgive her
+                        Answer 2
                     </Button>
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <div className="float-left">
-                        <figure>
-                            <Link to="/">
-                                <Figure.Image
-                                    width={50}
-                                    height={50}
-                                    src="//placehold.it/50"
-                                />
-                            </Link>
-                            <figcaption class="figure-caption text-middle">Report</figcaption>
-                        </figure>
-                    </div >
-                </Col>
-                <Col>
-                    <div className="float-right">
-                        <figure>
-                        <a>
-                                <Figure.Image
-                                    width={50}
-                                    height={50}
-                                    src="//placehold.it/50"
-                                />
-                            </a>
-                            <figcaption class="figure-caption text-middle">Skip</figcaption>
-                        </figure>
-                    </div>
                 </Col>
             </Row>
         </div>
