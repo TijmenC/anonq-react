@@ -80,13 +80,13 @@ function QuestionForm() {
                             <Form.Group controlId="title">
                                 <br />
                                 <Form.Label><h4>Polls</h4></Form.Label>
-                                <Form.Control placeholder="Answer 1" name="Answer1" value={Question.title} onChange={handleChange} required />
+                                <Form.Control placeholder="Answer 1" name="Answer1" /*value={Question} onChange={handleChange}*/ required />
                                 <br />
-                                <Form.Control placeholder="Answer 2" name="Answer2" value={Question.title} onChange={handleChange} required />
+                                <Form.Control placeholder="Answer 2" name="Answer2" /*value={Question} onChange={handleChange}*/ required />
                                 <br />
-                                <Form.Control placeholder="Answer 3" name="Answer3" value={Question.title} onChange={handleChange} required />
+                                <Form.Control placeholder="Answer 3" name="Answer3" /*value={Question} onChange={handleChange}*/ required />
                                 <br />
-                                <Form.Control placeholder="Answer 4" name="Answer4" value={Question.title} onChange={handleChange} required />
+                                <Form.Control placeholder="Answer 4" name="Answer4" /*value={Question} onChange={handleChange}*/ required />
                             </Form.Group>
                         </Col>
                     </Row>

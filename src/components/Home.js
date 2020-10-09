@@ -9,16 +9,15 @@ import { Link, } from "react-router-dom";
 
 
 
-
-
 function Home() {
     const [questionList, setQuestionList] = useState([]);
     const [id, setID] = useState(1);
 
     const handleChange = () => {
-        const min = 1;
-        const max = 2;
-        setID(Math.round(min + Math.random() * (max - min)));
+        axios.get("https://localhost:44348/api/question/1/GetRandomQuestionId").then((res) => {
+            var randomnum = res.data;
+            setID(randomnum)
+        });
     };
 
     useEffect(() => {
