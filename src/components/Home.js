@@ -11,7 +11,7 @@ import { Link, } from "react-router-dom";
 
 function Home() {
     const [questionList, setQuestionList] = useState([]);
-    const [id, setID] = useState(1);
+    const [id, setID] = useState(2);
 
     const handleChange = () => {
         axios.get("https://localhost:44348/api/question/1/GetRandomQuestionId").then((res) => {

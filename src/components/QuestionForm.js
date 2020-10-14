@@ -19,7 +19,6 @@ function QuestionForm() {
         setQuestion({ ...Question, [event.target.name]: event.target.value });
     };
 
-
     const handleSubmit = (e) => {
         e.preventDefault()
         axios.post('https://localhost:44348/api/Question', Question).then((res) => {
@@ -27,6 +26,29 @@ function QuestionForm() {
             console.log(res.data);
         })
     };
+
+
+
+
+    const blankPoll = { poll: '', };
+    const [Poll, setPoll] = useState([
+        { ...blankPoll }
+    ]);
+    const addPoll = () => {
+        setPoll([...Poll, { ...blankPoll }]);
+    };
+    const handlePollChange = (e) => {
+        const updatedPolls = [...Poll];
+        updatedPolls[e.target.dataset.idx]["poll"] = e.target.value;
+        setPoll(updatedPolls);
+      };
+
+
+
+
+
+
+
 
 
     return (
@@ -75,19 +97,48 @@ function QuestionForm() {
                             </Form.Check>
                         </Col>
                     </Row>
+{/*                     
                     <Row className="justify-content-md-center">
                         <Col md="8">
                             <Form.Group controlId="title">
                                 <br />
                                 <Form.Label><h4>Polls</h4></Form.Label>
-                                <Form.Control placeholder="Answer 1" name="Answer1" /*value={Question} onChange={handleChange}*/ required />
+                                <Form.Control placeholder="Answer 1" name="Answer1" value={Question} onChange={handleChange} required />
                                 <br />
-                                <Form.Control placeholder="Answer 2" name="Answer2" /*value={Question} onChange={handleChange}*/ required />
+                                <Form.Control placeholder="Answer 2" name="Answer2" value={Question} onChange={handleChange} required />
                                 <br />
-                                <Form.Control placeholder="Answer 3" name="Answer3" /*value={Question} onChange={handleChange}*/ required />
+                                <Form.Control placeholder="Answer 3" name="Answer3" value={Question} onChange={handleChange} required />
                                 <br />
-                                <Form.Control placeholder="Answer 4" name="Answer4" /*value={Question} onChange={handleChange}*/ required />
+                                <Form.Control placeholder="Answer 4" name="Answer4" value={Question} onChange={handleChange} required />
                             </Form.Group>
+                        </Col>
+                    </Row>
+                     */}
+                    <Row className="justify-content-md-center">
+                        <Col md="8">
+                            <Button
+                                type="button"
+                                value="Add New Cat"
+                                onClick={addPoll}
+                            />
+                            {
+                                Poll.map((val, idx) => {
+                                    return (
+                                        <Form.Group controlId="title">
+                                            <div key={`cat-${idx}`}>
+                                                <Form.Label>{`Poll #${idx + 1}`}</Form.Label>
+                                                <Form.Control
+                                                    type="text"
+                                                    data-idx={idx}
+                                                    className="poll"
+                                                    value={Poll[idx].poll}
+                                                    onChange={handlePollChange}
+                                                />
+                                            </div>
+                                        </Form.Group>
+                                    );
+                                })
+                            }
                         </Col>
                     </Row>
                     <Row className="justify-content-md-center">
