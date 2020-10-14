@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Image, Figure, Button, Form, Checkbox } from 'react-bootstrap';
 import axios from "axios";
+import PropTypes from 'prop-types';
 import '../styling/QuestionForm.css';
 
 const QuestionUri = "https://localhost:44348/api/Question/";
@@ -41,7 +42,7 @@ function QuestionForm() {
         const updatedPolls = [...Poll];
         updatedPolls[e.target.dataset.idx]["poll"] = e.target.value;
         setPoll(updatedPolls);
-      };
+    };
 
 
 
@@ -97,7 +98,7 @@ function QuestionForm() {
                             </Form.Check>
                         </Col>
                     </Row>
-{/*                     
+                    {/*                     
                     <Row className="justify-content-md-center">
                         <Col md="8">
                             <Form.Group controlId="title">
@@ -116,15 +117,15 @@ function QuestionForm() {
                      */}
                     <Row className="justify-content-md-center">
                         <Col md="8">
-                            <Button
-                                type="button"
-                                value="Add New Cat"
-                                onClick={addPoll}
-                            />
+                            <br />
+                            <Button variant="primary" onClick={addPoll}>
+                            Create new poll
+                            </Button>
+                            <br /> <br />
                             {
                                 Poll.map((val, idx) => {
                                     return (
-                                        <Form.Group controlId="title">
+                                        <Form.Group>
                                             <div key={`cat-${idx}`}>
                                                 <Form.Label>{`Poll #${idx + 1}`}</Form.Label>
                                                 <Form.Control
