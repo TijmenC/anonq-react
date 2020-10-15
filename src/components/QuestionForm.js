@@ -22,15 +22,23 @@ function QuestionForm() {
         setQuestion({ ...Question, [event.target.name]: event.target.value });
     };
 
+     
+    const [CommentEnable, setCommentEnable] = useState(false)
+    const handleCheckbox = () => { 
+        setCommentEnable(!CommentEnable)
+        setQuestion({ ...Question, commentsenabled: CommentEnable });
+    };
+    
+   
      const handleSubmit = (e) => {
         e.preventDefault()
-    //     axios.post('https://localhost:44348/api/Question', Question).then((res) => {
-    //         console.log(res);
-    //         console.log(res.data);
-    //     })
-        axios.get(GetQuestionIDUri + Question.title).then((res) => {
-            const gotquestionid = res.data;
-        });
+        axios.post('https://localhost:44348/api/Question', Question).then((res) => {
+            console.log(res);
+            console.log(res.data);
+        })
+        // // axios.get(GetQuestionIDUri + Question.title).then((res) => {
+        // //     const gotquestionid = res.data;
+        // });
     };
 
 
@@ -98,7 +106,7 @@ function QuestionForm() {
                             <br />
                             <Form.Label><h4>Comments</h4></Form.Label>
                             <Form.Check type="checkbox" id="EnableComments">
-                                <Form.Check.Input type="checkbox" isValid />
+                                <Form.Check.Input type="checkbox" CommentsEnable={CommentEnable} onChange={handleCheckbox} isValid />
                                  Enable
                             </Form.Check>
                         </Col>
