@@ -9,7 +9,7 @@ const GetQuestionIDUri = "https://localhost:44348/api/Question/GetQuestionIDByTi
 
 
 function QuestionForm() {
-    const [Question, setQuestion] = useState(
+    const [question, setQuestion] = useState(
         {
             title: '',
             description: '',
@@ -19,20 +19,20 @@ function QuestionForm() {
     );
 
     const handleChange = (event) => {
-        setQuestion({ ...Question, [event.target.name]: event.target.value });
+        setQuestion({ ...question, [event.target.name]: event.target.value });
     };
 
      
-    const [CommentEnable, setCommentEnable] = useState(false)
+    const [commentEnable, setCommentEnable] = useState(false)
     const handleCheckbox = () => { 
-        setCommentEnable(!CommentEnable)
-        setQuestion({ ...Question, commentsenabled: CommentEnable });
+        setCommentEnable(!commentEnable)
     };
     
    
      const handleSubmit = (e) => {
+        setQuestion({ ...question, commentsenabled: commentEnable });
         e.preventDefault()
-        axios.post('https://localhost:44348/api/Question', Question).then((res) => {
+        axios.post('https://localhost:44348/api/Question', question).then((res) => {
             console.log(res);
             console.log(res.data);
         })
@@ -79,7 +79,7 @@ function QuestionForm() {
                         <Col md="8">
                             <Form.Group controlId="title">
                                 <Form.Label><h4>Title</h4></Form.Label>
-                                <Form.Control placeholder="Enter Title" name="title" value={Question.title} onChange={handleChange} required />
+                                <Form.Control placeholder="Enter Title" name="title" value={question.title} onChange={handleChange} required />
                             </Form.Group>
                         </Col>
                     </Row>
@@ -87,14 +87,14 @@ function QuestionForm() {
                         <Col md="8">
                             <Form.Group controlId="exampleForm.ControlTextarea1">
                                 <Form.Label><h4>Description</h4></Form.Label>
-                                <Form.Control placeholder="Enter Description" name="description" value={Question.description} onChange={handleChange} as="textarea" rows="3" />
+                                <Form.Control placeholder="Enter Description" name="description" value={question.description} onChange={handleChange} as="textarea" rows="3" />
                             </Form.Group>
                         </Col>
                     </Row>
                     <Row className="justify-content-md-center">
                         <Col md="8">
                             <Form.Label><h4>Tag</h4></Form.Label>
-                            <Form.Control as="select" name="tag" value={Question.tag} onChange={handleChange}>
+                            <Form.Control as="select" name="tag" value={question.tag} onChange={handleChange}>
                                 <option>Personal</option>
                                 <option>Relationship</option>
                                 <option>Abuse</option>
@@ -106,7 +106,7 @@ function QuestionForm() {
                             <br />
                             <Form.Label><h4>Comments</h4></Form.Label>
                             <Form.Check type="checkbox" id="EnableComments">
-                                <Form.Check.Input type="checkbox" CommentsEnable={CommentEnable} onChange={handleCheckbox} isValid />
+                                <Form.Check.Input type="checkbox" value={commentEnable} onChange={handleCheckbox} isValid />
                                  Enable
                             </Form.Check>
                         </Col>
