@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import '../styling/QuestionForm.css';
 
 const QuestionUri = "https://localhost:44348/api/Question/";
+const GetQuestionIDUri = "https://localhost:44348/api/Question/GetQuestionIDByTitle/";
+
 
 function QuestionForm() {
     const [Question, setQuestion] = useState(
@@ -26,12 +28,14 @@ function QuestionForm() {
             console.log(res);
             console.log(res.data);
         })
+        axios.get(GetQuestionIDUri + Question.title).then((res) => {
+        });
     };
 
 
 
 
-    const blankPoll = { poll: '', };
+    const blankPoll = { poll: '', questionid: '' };
     const [Poll, setPoll] = useState([
         { ...blankPoll }
     ]);
