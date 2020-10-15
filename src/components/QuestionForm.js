@@ -98,23 +98,6 @@ function QuestionForm() {
                             </Form.Check>
                         </Col>
                     </Row>
-                    {/*                     
-                    <Row className="justify-content-md-center">
-                        <Col md="8">
-                            <Form.Group controlId="title">
-                                <br />
-                                <Form.Label><h4>Polls</h4></Form.Label>
-                                <Form.Control placeholder="Answer 1" name="Answer1" value={Question} onChange={handleChange} required />
-                                <br />
-                                <Form.Control placeholder="Answer 2" name="Answer2" value={Question} onChange={handleChange} required />
-                                <br />
-                                <Form.Control placeholder="Answer 3" name="Answer3" value={Question} onChange={handleChange} required />
-                                <br />
-                                <Form.Control placeholder="Answer 4" name="Answer4" value={Question} onChange={handleChange} required />
-                            </Form.Group>
-                        </Col>
-                    </Row>
-                     */}
                     <Row className="justify-content-md-center">
                         <Col md="8">
                             <br />
@@ -126,7 +109,7 @@ function QuestionForm() {
                                 Poll.map((val, idx) => {
                                     return (
                                         <Form.Group>
-                                            <div key={`cat-${idx}`}>
+                                            <div key={`poll-${idx}`}>
                                                 <Form.Label>{`Poll #${idx + 1}`}</Form.Label>
                                                 <Form.Control
                                                     type="text"
