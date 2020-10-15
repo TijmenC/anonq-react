@@ -22,20 +22,21 @@ function QuestionForm() {
         setQuestion({ ...Question, [event.target.name]: event.target.value });
     };
 
-    const handleSubmit = (e) => {
+     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('https://localhost:44348/api/Question', Question).then((res) => {
-            console.log(res);
-            console.log(res.data);
-        })
+    //     axios.post('https://localhost:44348/api/Question', Question).then((res) => {
+    //         console.log(res);
+    //         console.log(res.data);
+    //     })
         axios.get(GetQuestionIDUri + Question.title).then((res) => {
+            const gotquestionid = res.data;
         });
     };
 
 
 
 
-    const blankPoll = { poll: '', questionid: '' };
+    const blankPoll = { poll: '' };
     const [Poll, setPoll] = useState([
         { ...blankPoll }
     ]);
