@@ -24,7 +24,14 @@ function QuestionForm() {
             poll: []
         }
     );
-
+/*
+    const [fullQuestion, setFullQuestion] = useState(
+        {
+            question:{title:'', description:'', tag: '', commentsenabled: ''},
+            poll: [{poll:''}]
+        }
+    );
+*/
     const handleChange = (event) => {
         setQuestion({ ...question, [event.target.name]: event.target.value });
     };
