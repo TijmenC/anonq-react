@@ -50,7 +50,7 @@ function QuestionForm() {
     const handleSubmit = (e) => {
         setQuestion({ ...question, commentsenabled: commentEnable });
         e.preventDefault()
-        axios.post('https://localhost:44348/api/Question', question, poll ).then((res) => {
+        axios.post('https://localhost:44348/api/Question', question).then((res) => {
             console.log(res);
             console.log(res.data);
         })
