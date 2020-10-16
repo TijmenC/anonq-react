@@ -18,20 +18,19 @@ function QuestionForm() {
             commentsenabled: ''
         }
     );
+    const [fullQuestion, setFullQuestion] = useState(
+        {
+            question: '',
+            poll: []
+        }
+    );
 
     const handleChange = (event) => {
         setQuestion({ ...question, [event.target.name]: event.target.value });
     };
 
-     
-/* Checkbox setstate */
-    const [commentEnable, setCommentEnable] = useState(false)
-    const handleCheckbox = () => { 
-        setCommentEnable(!commentEnable)
-    };
-    
-   
-/* Poll setstate */
+
+    /* Poll setstate */
     const blankPoll = { poll: '' };
     const [poll, setPoll] = useState([
         { ...blankPoll }
@@ -46,11 +45,16 @@ function QuestionForm() {
     };
 
 
-/* Post Question + Poll */
+    /* Checkbox setstate */
+    const [commentEnable, setCommentEnable] = useState(false)
+
+    /* Post Question + Poll */
     const handleSubmit = (e) => {
-        setQuestion({ ...question, commentsenabled: commentEnable });
         e.preventDefault()
-        axios.post('https://localhost:44348/api/Question', question).then((res) => {
+        setQuestion({ ...question, commentsenabled: commentEnable });
+        setFullQuestion((prevState) => ({ ...prevState, poll: poll }));
+        setFullQuestion((prevState) => ({ ...prevState, question: question }));
+        axios.post('https://localhost:44348/api/Question', fullQuestion).then((res) => {
             console.log(res);
             console.log(res.data);
         })
@@ -103,7 +107,7 @@ function QuestionForm() {
                             <br />
                             <Form.Label><h4>Comments</h4></Form.Label>
                             <Form.Check type="checkbox" id="EnableComments">
-                                <Form.Check.Input type="checkbox" value={commentEnable} onChange={handleCheckbox} isValid />
+                                <Form.Check.Input type="checkbox" value={commentEnable} onChange={() => setCommentEnable(!commentEnable)} isValid />
                                  Enable
                             </Form.Check>
                         </Col>
@@ -112,7 +116,7 @@ function QuestionForm() {
                         <Col md="8">
                             <br />
                             <Button variant="primary" onClick={addPoll}>
-                            Create new poll
+                                Create new poll
                             </Button>
                             <br /> <br />
                             {
