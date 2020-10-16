@@ -9,6 +9,7 @@ const GetQuestionIDUri = "https://localhost:44348/api/Question/GetQuestionIDByTi
 
 
 function QuestionForm() {
+    /* Question setState */
     const [question, setQuestion] = useState(
         {
             title: '',
@@ -23,41 +24,37 @@ function QuestionForm() {
     };
 
      
+/* Checkbox setstate */
     const [commentEnable, setCommentEnable] = useState(false)
     const handleCheckbox = () => { 
         setCommentEnable(!commentEnable)
     };
     
    
-     const handleSubmit = (e) => {
-        setQuestion({ ...question, commentsenabled: commentEnable });
-        e.preventDefault()
-        axios.post('https://localhost:44348/api/Question', question).then((res) => {
-            console.log(res);
-            console.log(res.data);
-        })
-        // // axios.get(GetQuestionIDUri + Question.title).then((res) => {
-        // //     const gotquestionid = res.data;
-        // });
-    };
-
-
-
-
+/* Poll setstate */
     const blankPoll = { poll: '' };
-    const [Poll, setPoll] = useState([
+    const [poll, setPoll] = useState([
         { ...blankPoll }
     ]);
     const addPoll = () => {
-        setPoll([...Poll, { ...blankPoll }]);
+        setPoll([...poll, { ...blankPoll }]);
     };
     const handlePollChange = (e) => {
-        const updatedPolls = [...Poll];
+        const updatedPolls = [...poll];
         updatedPolls[e.target.dataset.idx]["poll"] = e.target.value;
         setPoll(updatedPolls);
     };
 
 
+/* Post Question + Poll */
+    const handleSubmit = (e) => {
+        setQuestion({ ...question, commentsenabled: commentEnable });
+        e.preventDefault()
+        axios.post('https://localhost:44348/api/Question', question, poll ).then((res) => {
+            console.log(res);
+            console.log(res.data);
+        })
+    };
 
 
 
@@ -119,7 +116,7 @@ function QuestionForm() {
                             </Button>
                             <br /> <br />
                             {
-                                Poll.map((val, idx) => {
+                                poll.map((val, idx) => {
                                     return (
                                         <Form.Group>
                                             <div key={`poll-${idx}`}>
@@ -128,7 +125,7 @@ function QuestionForm() {
                                                     type="text"
                                                     data-idx={idx}
                                                     className="poll"
-                                                    value={Poll[idx].poll}
+                                                    value={poll[idx].poll}
                                                     onChange={handlePollChange}
                                                 />
                                             </div>
