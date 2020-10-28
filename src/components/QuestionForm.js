@@ -9,43 +9,33 @@ const GetQuestionIDUri = "https://localhost:44348/api/Question/GetQuestionIDByTi
 
 
 function QuestionForm() {
+    /* Checkbox setstate */
+    const [commentEnable, setCommentEnable] = useState(false)
+
+    useEffect(() => {
+        setFullQuestion((prevState) => ({ ...prevState, question: { ...prevState.question, commentsenabled: commentEnable } }));
+    }, [commentEnable]);
     /* Question setState */
-    const [question, setQuestion] = useState(
-        {
-            title: '',
-            description: '',
-            tag: '',
-            commentsenabled: false
-        }
-    );
     const [fullQuestion, setFullQuestion] = useState(
         {
-            question:{title:'', description:'', tag: '', commentsenabled: ''},
-            poll: [{poll:''}]
+            question: { title: '', description: '', tag: '', commentsenabled: '' },
+            poll: [{ poll: '' }]
         }
     );
-/*
-    const [testfullQuestion, settestFullQuestion] = useState(
-        {
-            question:'',
-            poll: []
-        }
-    );
-*/
     const handleChange = (event) => {
         const eventname = event.target.name
         const eventvalue = event.target.value
-        setFullQuestion((prevState) => ({ ...prevState, question: {...prevState.question, [eventname]: eventvalue}}));
+        setFullQuestion((prevState) => ({ ...prevState, question: { ...prevState.question, [eventname]: eventvalue } }));
     };
 
 
     /* Poll setstate */
-    const blankPoll = { poll: '' };
     const [poll, setPoll] = useState([
         { poll: '' }
     ]);
     const addPoll = () => {
-        setPoll([...poll, { ...blankPoll }]);
+        setPoll([...poll, { poll: '' }]);
+        // setFullQuestion((oldArray) => ({...oldArray, poll: [{poll:''}] }));
     };
     const handlePollChange = (e) => {
         const updatedPolls = [...poll];
@@ -54,27 +44,15 @@ function QuestionForm() {
     };
 
 
-    /* Checkbox setstate */
-    const [commentEnable, setCommentEnable] = useState(false)
-
     /* Post Question + Poll */
     const handleSubmit = async (e) => {
+        setFullQuestion((prevState) => ({ ...prevState, poll: poll }));
         e.preventDefault()
-        await handleFullQuestionSet()
         await axios.post('https://localhost:44348/api/Question', fullQuestion).then((res) => {
             console.log(res);
             console.log(res.data);
         })
     };
-    const handleFullQuestionSet = (e) => {
-        // setQuestion({ ...question, commentsenabled: commentEnable });
-        setFullQuestion((prevState) => ({ ...prevState, poll: poll }));
-        setFullQuestion((prevState) => ({ ...prevState, question: question }));
-    };
-
-
-
-
 
 
 
