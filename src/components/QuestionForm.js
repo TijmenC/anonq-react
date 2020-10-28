@@ -15,32 +15,34 @@ function QuestionForm() {
             title: '',
             description: '',
             tag: '',
-            commentsenabled: ''
+            commentsenabled: false
         }
     );
-    const [fullQuestion, setFullQuestion] = useState(
-        {
-            question: '',
-            poll: []
-        }
-    );
-/*
     const [fullQuestion, setFullQuestion] = useState(
         {
             question:{title:'', description:'', tag: '', commentsenabled: ''},
             poll: [{poll:''}]
         }
     );
+/*
+    const [testfullQuestion, settestFullQuestion] = useState(
+        {
+            question:'',
+            poll: []
+        }
+    );
 */
     const handleChange = (event) => {
-        setQuestion({ ...question, [event.target.name]: event.target.value });
+        const eventname = event.target.name
+        const eventvalue = event.target.value
+        setFullQuestion((prevState) => ({ ...prevState, question: {...prevState.question, [eventname]: eventvalue}}));
     };
 
 
     /* Poll setstate */
     const blankPoll = { poll: '' };
     const [poll, setPoll] = useState([
-        { ...blankPoll }
+        { poll: '' }
     ]);
     const addPoll = () => {
         setPoll([...poll, { ...blankPoll }]);
@@ -56,15 +58,18 @@ function QuestionForm() {
     const [commentEnable, setCommentEnable] = useState(false)
 
     /* Post Question + Poll */
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        setQuestion({ ...question, commentsenabled: commentEnable });
-        setFullQuestion((prevState) => ({ ...prevState, poll: poll }));
-        setFullQuestion((prevState) => ({ ...prevState, question: question }));
-        axios.post('https://localhost:44348/api/Question', fullQuestion).then((res) => {
+        await handleFullQuestionSet()
+        await axios.post('https://localhost:44348/api/Question', fullQuestion).then((res) => {
             console.log(res);
             console.log(res.data);
         })
+    };
+    const handleFullQuestionSet = (e) => {
+        // setQuestion({ ...question, commentsenabled: commentEnable });
+        setFullQuestion((prevState) => ({ ...prevState, poll: poll }));
+        setFullQuestion((prevState) => ({ ...prevState, question: question }));
     };
 
 
@@ -87,7 +92,7 @@ function QuestionForm() {
                         <Col md="8">
                             <Form.Group controlId="title">
                                 <Form.Label><h4>Title</h4></Form.Label>
-                                <Form.Control placeholder="Enter Title" name="title" value={question.title} onChange={handleChange} required />
+                                <Form.Control placeholder="Enter Title" name="title" value={fullQuestion.question.title} onChange={handleChange} required />
                             </Form.Group>
                         </Col>
                     </Row>
@@ -95,14 +100,14 @@ function QuestionForm() {
                         <Col md="8">
                             <Form.Group controlId="exampleForm.ControlTextarea1">
                                 <Form.Label><h4>Description</h4></Form.Label>
-                                <Form.Control placeholder="Enter Description" name="description" value={question.description} onChange={handleChange} as="textarea" rows="3" />
+                                <Form.Control placeholder="Enter Description" name="description" value={fullQuestion.question.description} onChange={handleChange} as="textarea" rows="3" />
                             </Form.Group>
                         </Col>
                     </Row>
                     <Row className="justify-content-md-center">
                         <Col md="8">
                             <Form.Label><h4>Tag</h4></Form.Label>
-                            <Form.Control as="select" name="tag" value={question.tag} onChange={handleChange}>
+                            <Form.Control as="select" name="tag" value={fullQuestion.question.tag} onChange={handleChange}>
                                 <option>Personal</option>
                                 <option>Relationship</option>
                                 <option>Abuse</option>
