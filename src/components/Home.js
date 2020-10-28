@@ -14,7 +14,7 @@ function Home() {
     const [id, setID] = useState(2);
 
     const handleChange = () => {
-        axios.get("https://localhost:44348/api/question/1/GetRandomQuestionId").then((res) => {
+        axios.get("https://localhost:44348/api/question/GetRandomQuestionId").then((res) => {
             var randomnum = res.data;
             setID(randomnum)
         });
