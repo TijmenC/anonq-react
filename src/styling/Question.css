@@ -3,6 +3,7 @@
     color: white;
     border: 2px solid white;
     outline: none !important;
+    margin: 5px;
 }
 .btn-primary:hover {
     background-color:black; 

@@ -10,6 +10,12 @@ import { Link, } from "react-router-dom";
 
 
 function Home() {
+    const [fullQuestion, setFullQuestion] = useState(
+        {
+            question: { title: '', description: '', tag: '', commentsenabled: '' },
+            poll: [{ poll: '' }]
+        }
+    );
     const [questionList, setQuestionList] = useState([]);
     const [id, setID] = useState(2);
 
@@ -21,15 +27,17 @@ function Home() {
     };
 
     useEffect(() => {
-        axios.get("https://localhost:44348/api/Question/" + id).then((res) => {
-            const newQuestionList = res.data;
-            setQuestionList(newQuestionList);
-            console.log(questionList);
+        axios.get("https://localhost:44348/api/question/" + id + "/QuestionAndPolls").then((res) => {
+            setFullQuestion((prevState) => ({ ...prevState, question: res.data.question }));
+            setFullQuestion((prevState) => ({ ...prevState, poll: res.data.poll }));
+            // const newQuestionList = res.data;
+            // setQuestionList(newQuestionList);
+            // console.log(questionList);
         });
     }, [id]);
     return (
         <div>
-            <Question question={questionList} />
+            <Question question={fullQuestion.question} polls={fullQuestion.poll} />
             <div className="rounded container">
                 <Row>
                     <Col>

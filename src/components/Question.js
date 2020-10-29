@@ -12,10 +12,11 @@ import {
     Link,
     NavLink
 } from "react-router-dom";
+import Poll from "./Poll";
 
 
 
-function Question( { question }) {
+function Question( { question, polls }) {
     return (
         <div className="rounded container">
             <Row className="justify-content-md-left">
@@ -29,16 +30,10 @@ function Question( { question }) {
                 </Col>
             </Row>
             <Row className="justify-content-md-left">
-                <Col>
-                    <br />
-                    <Button variant="primary" size="lg" block>
-                        Answer 1
-                    </Button>
-
-                    <Button variant="primary" size="lg" block>
-                        Answer 2
-                    </Button>
-                </Col>
+            <br />
+            {polls.map((polls) => (
+            <Poll key={polls.id} polls={polls} />
+          ))} 
             </Row>
         </div>
     );
