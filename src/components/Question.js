@@ -17,17 +17,18 @@ import Poll from "./Poll";
 
 
 function Question({ question, polls }) {
-
+    const [toggle, setToggle] = useState(false);
     const [viewpolls, setPolls] = useState([]);
     
 
        useEffect(() => {
          setPolls(polls)
+         setToggle(false)
       }, [polls]);
 
 
     const getPercentages = async (questionid) => {
-        // questionid.preventDefault()
+        setToggle(!toggle);
         await axios.get("https://localhost:44348/api/polls/" + questionid + "/getPercentages").then((res) => {
             console.log(res);
             console.log(res.data);
@@ -50,7 +51,7 @@ function Question({ question, polls }) {
             <Row className="justify-content-md-left">
                 <br />
                 {viewpolls.map((viewpolls) => (
-                    <Poll key={viewpolls.id} polls={viewpolls} percentages={getPercentages} />
+                    <Poll key={viewpolls.id} polls={viewpolls} percentages={getPercentages} toggle={toggle} />
                 ))}
             </Row>
         </div>

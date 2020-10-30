@@ -5,7 +5,7 @@ import '../styling/Question.css'
 import skip from '../images/skip.png'
 import report from '../images/report.png';
 import { Row, Col, Image, Figure, Button } from 'react-bootstrap';
-function Poll({ polls, percentages }) {
+function Poll({ polls, percentages, toggle }) {
 
     const handleClick = async (e) => {
         e.preventDefault()
@@ -20,7 +20,7 @@ function Poll({ polls, percentages }) {
         <div className="rounded container">
             <Row className="justify-content-md-left">
                 <Col>
-                    <Button variant="primary" size="lg" onClick={handleClick} block>
+                    <Button disabled={toggle} variant="primary" size="lg" onClick={handleClick} block>
                         {polls.poll}
                         <br />
                         {polls.percentage}
