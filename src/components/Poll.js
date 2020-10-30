@@ -22,6 +22,8 @@ function Poll({ polls, percentages }) {
                 <Col>
                     <Button variant="primary" size="lg" onClick={handleClick} block>
                         {polls.poll}
+                        <br />
+                        {polls.percentage}
                     </Button>
                 </Col>
             </Row>

@@ -16,13 +16,23 @@ import Poll from "./Poll";
 
 
 
-function Question( { question, polls }) {
+function Question({ question, polls }) {
 
-    const [viewpolls, setpolls] = useState(polls);
-
+    const [viewpolls, setPolls] = useState([]);
     
-    const getPercentages = (questionid) => {
-        console.log(questionid)
+
+       useEffect(() => {
+         setPolls(polls)
+      }, [polls]);
+
+
+    const getPercentages = async (questionid) => {
+        // questionid.preventDefault()
+        await axios.get("https://localhost:44348/api/polls/" + questionid + "/getPercentages").then((res) => {
+            console.log(res);
+            console.log(res.data);
+            setPolls(res.data)
+        });
     };
 
     return (
@@ -38,10 +48,10 @@ function Question( { question, polls }) {
                 </Col>
             </Row>
             <Row className="justify-content-md-left">
-            <br />
-            {polls.map((polls) => (
-            <Poll key={polls.id} polls={polls} percentages={getPercentages} />
-          ))} 
+                <br />
+                {viewpolls.map((viewpolls) => (
+                    <Poll key={viewpolls.id} polls={viewpolls} percentages={getPercentages} />
+                ))}
             </Row>
         </div>
     );
