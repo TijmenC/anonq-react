@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, View } from "react";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styling/Question.css'
 import skip from '../images/skip.png'
 import report from '../images/report.png';
-import { Row, Col, Image, Figure, Button } from 'react-bootstrap';
+import { Row, Col, Image, Figure, Button, } from 'react-bootstrap';
 function Poll({ polls, percentages, toggle }) {
 
     const handleClick = async (e) => {
@@ -15,15 +15,19 @@ function Poll({ polls, percentages, toggle }) {
         })
         percentages(polls.questionId)
     };
+    const PercentageText = () => (
+       <b>%</b>
+      )
 
     return (
         <div className="rounded container">
             <Row className="justify-content-md-left">
                 <Col>
                     <Button disabled={toggle} variant="primary" size="lg" onClick={handleClick} block>
-                        {polls.poll}
+                        {polls.poll} 
                         <br />
-                        {polls.percentage}
+                        {polls.percentage}  
+                        { toggle ? <PercentageText /> : null }
                     </Button>
                 </Col>
             </Row>
