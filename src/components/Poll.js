@@ -5,7 +5,7 @@ import '../styling/Question.css'
 import skip from '../images/skip.png'
 import report from '../images/report.png';
 import { Row, Col, Image, Figure, Button } from 'react-bootstrap';
-function Poll({ polls }) {
+function Poll({ polls, percentages }) {
 
     const handleClick = async (e) => {
         e.preventDefault()
@@ -13,14 +13,8 @@ function Poll({ polls }) {
             console.log(res);
             console.log(res.data);
         })
+        percentages(polls.questionId)
     };
-    const [fullQuestion, setFullQuestion] = useState(
-        {
-            id: polls.id,
-            poll: polls
-        }
-    );
-
 
     return (
         <div className="rounded container">

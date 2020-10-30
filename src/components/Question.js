@@ -17,6 +17,14 @@ import Poll from "./Poll";
 
 
 function Question( { question, polls }) {
+
+    const [viewpolls, setpolls] = useState(polls);
+
+    
+    const getPercentages = (questionid) => {
+        console.log(questionid)
+    };
+
     return (
         <div className="rounded container">
             <Row className="justify-content-md-left">
@@ -32,7 +40,7 @@ function Question( { question, polls }) {
             <Row className="justify-content-md-left">
             <br />
             {polls.map((polls) => (
-            <Poll key={polls.id} polls={polls} />
+            <Poll key={polls.id} polls={polls} percentages={getPercentages} />
           ))} 
             </Row>
         </div>

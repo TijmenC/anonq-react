@@ -30,9 +30,6 @@ function Home() {
         axios.get("https://localhost:44348/api/question/" + id + "/QuestionAndPolls").then((res) => {
             setFullQuestion((prevState) => ({ ...prevState, question: res.data.question }));
             setFullQuestion((prevState) => ({ ...prevState, poll: res.data.poll }));
-            // const newQuestionList = res.data;
-            // setQuestionList(newQuestionList);
-            // console.log(questionList);
         });
     }, [id]);
     return (
