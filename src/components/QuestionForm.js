@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Image, Figure, Button, Form, Checkbox } from 'react-bootstrap';
+import { Row, Col, Button, Form } from 'react-bootstrap';
 import axios from "axios";
-import PropTypes from 'prop-types';
 import '../styling/QuestionForm.css';
 
-const QuestionUri = "https://localhost:44348/api/Question/";
-const GetQuestionIDUri = "https://localhost:44348/api/Question/GetQuestionIDByTitle/";
 
 
 function QuestionForm() {
@@ -27,7 +24,6 @@ function QuestionForm() {
         const eventvalue = event.target.value
         setFullQuestion((prevState) => ({ ...prevState, question: { ...prevState.question, [eventname]: eventvalue } }));
     };
-
 
     /* Poll setstate */
     const [poll, setPoll] = useState([

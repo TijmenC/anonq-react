@@ -1,10 +1,8 @@
-import React, { useState, useEffect, View } from "react";
+import React from "react";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styling/Question.css'
-import skip from '../images/skip.png'
-import report from '../images/report.png';
-import { Row, Col, Image, Figure, Button, } from 'react-bootstrap';
+import { Row, Col, Button, } from 'react-bootstrap';
 function Poll({ polls, percentages, toggle }) {
 
     const handleClick = async (e) => {

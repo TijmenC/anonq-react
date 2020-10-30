@@ -2,13 +2,9 @@ import React from 'react';
 import logo from '../images/logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styling/Navigationbar.css';
-import { Button, Navbar, Nav, NavDropdown, Form, FormControl } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  NavLink
+  Link
 } from "react-router-dom";
 
 
@@ -18,7 +14,7 @@ function Navigationbar() {
       <Nav className="container-fluid">
         <Navbar.Brand>
         <Link to="/">
-          <img src={logo} width="100" height="50" className="d-inline-block align-top" />
+          <img src={logo} alt="error" width="100" height="50" className="d-inline-block align-top" />
           </Link>
         AnonQ
       </Navbar.Brand>
@@ -26,7 +22,6 @@ function Navigationbar() {
             <Link to="/">Home </Link>
             |
             <Link to="/QuestionForm"> Post A Question</Link>
-          {/* <Button variant="dark">Ask A Question</Button> */}
         </Nav.Item>
       </Nav>
     </Navbar>

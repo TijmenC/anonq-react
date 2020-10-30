@@ -2,16 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styling/Question.css'
-import skip from '../images/skip.png'
-import report from '../images/report.png';
-import { Row, Col, Image, Figure, Button } from 'react-bootstrap';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    NavLink
-} from "react-router-dom";
+import { Row, Col } from 'react-bootstrap';
 import Poll from "./Poll";
 
 
