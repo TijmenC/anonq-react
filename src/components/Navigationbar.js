@@ -19,9 +19,9 @@ function Navigationbar() {
         AnonQ
       </Navbar.Brand>
         <Nav.Item className="ml-auto">
-            <Link to="/">Home </Link>
+            <Link to="/">Home</Link>
             |
-            <Link to="/QuestionForm"> Post A Question</Link>
+            <Link to="/AskQuestion"> Post A Question</Link>
         </Nav.Item>
       </Nav>
     </Navbar>
