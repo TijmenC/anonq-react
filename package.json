@@ -1,10 +1,31 @@
 {
   "name": "anonq-react",
   "version": "0.1.0",
+  "configurations": [
+    {
+      "name": "Debug CRA Tests",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/react-scripts",
+      "args": [
+        "test",
+        "--runInBand",
+        "--no-cache",
+        "--watchAll=false"
+      ],
+      "cwd": "${workspaceRoot}",
+      "protocol": "inspector",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "CI": "true"
+      },
+      "disableOptimisticBPs": true
+    }
+  ],
   "private": true,
   "dependencies": {
     "@babel/core": "^7.12.3",
-    "@babel/preset-env": "^7.12.1",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
@@ -18,7 +39,7 @@
     "stop": "taskkill -F -IM node.exe",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -37,6 +58,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.12.1",
     "@testing-library/dom": "^7.26.5",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0"
