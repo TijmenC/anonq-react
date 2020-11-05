@@ -35,6 +35,23 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3"
   },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    },
+    "roots": [
+      "<rootDir>",
+      "src"
+    ],
+    "modulePaths": [
+      "<rootDir>",
+      "src"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ]
+  },
   "scripts": {
     "stop": "taskkill -F -IM node.exe",
     "start": "react-scripts start",
@@ -59,6 +76,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.12.1",
+    "@babel/preset-typescript": "^7.12.1",
     "@testing-library/dom": "^7.26.5",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0"
