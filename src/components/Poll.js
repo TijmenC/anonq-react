@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styling/Question.css'
 import { Row, Col, Button, } from 'react-bootstrap';

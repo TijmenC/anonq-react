@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styling/Question.css'
 import { Row, Col } from 'react-bootstrap';
@@ -19,9 +18,9 @@ function Question({ question, polls }) {
       }, [polls]);
 
 
-    const getPercentages = (questionid) => {
+    const getPercentages = async (questionid) => {
         setToggle(!toggle);
-         PollService.GetPollPercentages(questionid).then((res) => {
+        await PollService.GetPollPercentages(questionid).then((res) => {
             console.log(res);
             console.log(res.data);
             setPolls(res.data)

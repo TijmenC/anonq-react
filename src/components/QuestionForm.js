@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Button, Form } from 'react-bootstrap';
-import axios from "axios";
 import '../styling/QuestionForm.css';
 import QuestionService from "../Services/QuestionService"
+import { useHistory } from 'react-router-dom';
+   
 
 
 
 function QuestionForm() {
+    /*Save history of Router */
+    const history = useHistory()
+
     /* Checkbox setstate */
     const [commentEnable, setCommentEnable] = useState(false)
 
@@ -45,12 +49,23 @@ function QuestionForm() {
     const handleSubmit = async (e) => {
         setFullQuestion((prevState) => ({ ...prevState, poll: poll }));
         e.preventDefault()
-        await QuestionService.PostQuestion(fullQuestion).then((res) => {
+    };
+    useEffect(() => {
+        async function PostQuestion(){
+            await QuestionService.PostQuestion(fullQuestion).then((res) => {
             console.log(res);
             console.log(res.data);
+            let path = `/`; 
+            history.push(path);
         })
-    };
-
+        let path = `/`; 
+        history.push(path);
+    }
+    PostQuestion();
+    //Because I use fullQuestion to set the state outside the useEffect()
+     // eslint-disable-next-line 
+    }, [fullQuestion.poll]);
+    
 
 
     return (
