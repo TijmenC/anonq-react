@@ -82,20 +82,22 @@ function QuestionForm() {
                                 <Form.Label><h4>Title</h4></Form.Label>
                                 <Form.Control placeholder="Enter Title" name="title" value={fullQuestion.question.title} onChange={handleChange} required />
                             </Form.Group>
+                            
                         </Col>
                     </Row>
                     <Row className="justify-content-md-center">
                         <Col md="8">
                             <Form.Group controlId="exampleForm.ControlTextarea1">
                                 <Form.Label><h4>Description</h4></Form.Label>
-                                <Form.Control placeholder="Enter Description" name="description" value={fullQuestion.question.description} onChange={handleChange} as="textarea" rows="3" />
+                                <Form.Control required placeholder="Enter Description" name="description" value={fullQuestion.question.description} onChange={handleChange} as="textarea" rows="3" />
                             </Form.Group>
                         </Col>
                     </Row>
                     <Row className="justify-content-md-center">
                         <Col md="8">
                             <Form.Label><h4>Tag</h4></Form.Label>
-                            <Form.Control as="select" name="tag" value={fullQuestion.question.tag} onChange={handleChange}>
+                            <Form.Control required as="select" name="tag" value={fullQuestion.question.tag} defaultValue="help" onChange={handleChange}>
+                                <option label="Select Tag" hidden ></option>
                                 <option>Personal</option>
                                 <option>Relationship</option>
                                 <option>Abuse</option>
