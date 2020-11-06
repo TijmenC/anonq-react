@@ -31,9 +31,8 @@ function QuestionForm() {
     };
 
     /* Poll setstate */
-    const [poll, setPoll] = useState([
-        { poll: '' }
-    ]);
+    const [poll, setPoll] = useState([]);
+
     const addPoll = () => {
         setPoll([...poll, { poll: '' }]);
         // setFullQuestion((oldArray) => ({...oldArray, poll: [{poll:''}] }));
@@ -128,6 +127,7 @@ function QuestionForm() {
                                             <div key={`poll-${idx}`}>
                                                 <Form.Label>{`Poll #${idx + 1}`}</Form.Label>
                                                 <Form.Control
+                                                    required
                                                     type="text"
                                                     data-idx={idx}
                                                     className="poll"
