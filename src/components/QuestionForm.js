@@ -55,8 +55,6 @@ function QuestionForm() {
             await QuestionService.PostQuestion(fullQuestion).then((res) => {
             console.log(res);
             console.log(res.data);
-            let path = `/`; 
-            history.push(path);
         })
         let path = `/`; 
         history.push(path);
