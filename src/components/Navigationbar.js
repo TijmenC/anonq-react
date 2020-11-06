@@ -2,7 +2,9 @@ import React from 'react';
 import logo from '../images/logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styling/Navigationbar.css';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, Image } from 'react-bootstrap';
+import QuestionIcon from '../images/QuestionIcon.svg';
+import HomeIcon from '../images/home.svg';
 import {
   Link
 } from "react-router-dom";
@@ -19,9 +21,14 @@ function Navigationbar() {
         AnonQ
       </Navbar.Brand>
         <Nav.Item className="ml-auto">
-            <Link to="/">Home</Link>
+            <Link to="/">
+            <Image src={HomeIcon}></Image >
+            </Link>
             |
-            <Link to="/AskQuestion"> Post A Question</Link>
+            <Link to="/AskQuestion">
+            <Image src={QuestionIcon}></Image >
+            </Link>
+
         </Nav.Item>
       </Nav>
     </Navbar>
