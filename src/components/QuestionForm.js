@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Row, Col, Button, Form } from 'react-bootstrap';
 import axios from "axios";
 import '../styling/QuestionForm.css';
+import QuestionService from "../Services/QuestionService"
 
 
 
@@ -44,7 +45,7 @@ function QuestionForm() {
     const handleSubmit = async (e) => {
         setFullQuestion((prevState) => ({ ...prevState, poll: poll }));
         e.preventDefault()
-        await axios.post('https://localhost:44348/api/Question', fullQuestion).then((res) => {
+        await QuestionService.PostQuestion(fullQuestion).then((res) => {
             console.log(res);
             console.log(res.data);
         })

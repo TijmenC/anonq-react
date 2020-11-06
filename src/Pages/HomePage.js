@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from "axios";
 import Question from '../components/Question'
 import HomeButtons from '../components/HomeButtons'
+import QuestionService from "../Services/QuestionService"
 
 function HomePage() {
     const [fullQuestion, setFullQuestion] = useState(
@@ -15,14 +16,14 @@ function HomePage() {
     const [id, setID] = useState(2);
 
     const handleChange = () => {
-        axios.get("https://localhost:44348/api/question/GetRandomQuestionId").then((res) => {
+         QuestionService.GetRandomQuestionId().then((res) => {
             var randomnum = res.data;
             setID(randomnum)
         });
     };
 
-    useEffect(() => {
-        axios.get("https://localhost:44348/api/question/" + id + "/QuestionAndPolls").then((res) => {
+    useEffect( () => {
+            QuestionService.GetQuestionAndPolls(id).then((res) => {
             setFullQuestion((prevState) => ({ ...prevState, question: res.data.question }));
             setFullQuestion((prevState) => ({ ...prevState, poll: res.data.poll }));
         });

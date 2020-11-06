@@ -3,11 +3,12 @@ import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styling/Question.css'
 import { Row, Col, Button, } from 'react-bootstrap';
+import PollService from "../Services/PollService"
 function Poll({ polls, percentages, toggle }) {
 
     const handleClick = async (e) => {
         e.preventDefault()
-        await axios.put("https://localhost:44348/api/polls/" + polls.id + "/UpdateVotes", polls).then((res) => {
+        await PollService.PutPollsVotes(polls.id, polls).then((res) => {
             console.log(res);
             console.log(res.data);
         })
