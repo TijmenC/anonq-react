@@ -35,7 +35,7 @@ function QuestionForm() {
 
     const addPoll = () => {
         setPoll([...poll, { poll: '' }]);
-        // setFullQuestion((oldArray) => ({...oldArray, poll: [{poll:''}] }));
+         // setFullQuestion((oldArray) => ({...oldArray, poll: [{poll:''}] }));
     };
     const handlePollChange = (e) => {
         const updatedPolls = [...poll];
@@ -55,10 +55,6 @@ function QuestionForm() {
             console.log(res);
             console.log(res.data);
         })
-        .catch((error) => {
-            console.log(error.response.data);
-        });
-        
         let path = `/`; 
         history.push(path);
     }
