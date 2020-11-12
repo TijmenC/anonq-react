@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Question from '../components/Question'
 import HomeButtons from '../components/HomeButtons'
 import QuestionService from "../Services/QuestionService"
+import Comment from "../components/Comment"
 
 function HomePage() {
     const [fullQuestion, setFullQuestion] = useState(
@@ -34,6 +35,7 @@ return (
     <div>
     <Question question={fullQuestion.question} polls={fullQuestion.poll} />
     <HomeButtons randomid={handleChange} />
+    <Comment />
     </div>
 );
 }
