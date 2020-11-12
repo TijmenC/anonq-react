@@ -27,6 +27,9 @@ function CreateComment({sentquestionid}) {
             console.log(res);
             console.log(res.data);
         })
+        .catch((error) => {
+            console.log(error.response.data);
+        });
     };
     return (
         <div className="rounded container">

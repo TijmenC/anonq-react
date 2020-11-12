@@ -28,6 +28,9 @@ function HomePage() {
         QuestionService.GetQuestionAndPolls(id).then((res) => {
             setFullQuestion((prevState) => ({ ...prevState, question: res.data.question }));
             setFullQuestion((prevState) => ({ ...prevState, poll: res.data.poll }));
+        })
+        .catch((error) => {
+            console.log(error.response.data);
         });
     }, [id]);
     useEffect(() => {

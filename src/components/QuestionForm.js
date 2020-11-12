@@ -55,6 +55,10 @@ function QuestionForm() {
             console.log(res);
             console.log(res.data);
         })
+        .catch((error) => {
+            console.log(error.response.data);
+        });
+        
         let path = `/`; 
         history.push(path);
     }

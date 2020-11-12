@@ -11,6 +11,9 @@ function Poll({ polls, percentages, toggle }) {
             console.log(res);
             console.log(res.data);
         })
+        .catch((error) => {
+            console.log(error.response.data);
+        });
         percentages(polls.questionId)
     };
     const PercentageText = () => (

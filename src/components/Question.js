@@ -24,7 +24,11 @@ function Question({ question, polls }) {
             console.log(res);
             console.log(res.data);
             setPolls(res.data)
+        })
+        .catch((error) => {
+            console.log(error.response.data);
         });
+        
     };
 
     return (
