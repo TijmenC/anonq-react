@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../images/logo.png';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../styling/Navigationbar.css';
 import { Navbar, Nav, Image } from 'react-bootstrap';
 import QuestionIcon from '../images/QuestionIcon.svg';

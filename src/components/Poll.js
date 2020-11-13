@@ -1,8 +1,8 @@
 import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css'
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../styling/Question.css'
 import { Row, Col, Button, } from 'react-bootstrap';
-import PollService from "../Services/PollService"
+import PollService from "../services/PollService"
 function Poll({ polls, percentages, toggle }) {
 
     const handleClick = async (e) => {

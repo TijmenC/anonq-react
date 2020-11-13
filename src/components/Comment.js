@@ -1,5 +1,5 @@
 import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css'
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../styling/Comment.css'
 import { Row, Col } from 'react-bootstrap';
 import logo from '../images/logo.png';

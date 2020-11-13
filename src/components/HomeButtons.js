@@ -1,5 +1,5 @@
 import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css'
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { Row, Col, Figure } from 'react-bootstrap';
 import skip from '../images/skip.png'
 import report from '../images/report.png';

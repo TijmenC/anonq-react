@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css'
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../styling/Question.css'
 import { Row, Col } from 'react-bootstrap';
 import Poll from "./Poll";
-import PollService from "../Services/PollService"
+import PollService from "../services/PollService"
 
 
 
