@@ -32,9 +32,9 @@ function HomePage() {
             setFullQuestion((prevState) => ({ ...prevState, question: res.data.question }));
             setFullQuestion((prevState) => ({ ...prevState, poll: res.data.poll }));
         })
-            .catch((error) => {
-                console.log(error.response.data);
-            });
+            // .catch((error) => {
+            //     console.log(error.response.data);
+            // });
         CommentService.GetComment(id).then((res) => {
             setComments(res.data)
         })
@@ -45,8 +45,8 @@ function HomePage() {
     },
         [fullQuestion.question]);
 
-    const ShowComments = () => (
-        <div className="rounded container">
+    const ShowComments = () => (   
+        <div>
             <Row className="justify-content-md-left ">
                 <Col md="1">
                 <b><h2>Comments</h2></b>
@@ -59,17 +59,18 @@ function HomePage() {
                 <Comment key={comments.id} sentcomments={comments} />
             ))}
             <CreateComment sentquestionid={fullQuestion.question.id} />
-        </div>
+            </div>
     )
 
 
     return (
         <div className="flex rounded container">
+            <div className="">
             <Question question={fullQuestion.question} polls={fullQuestion.poll} />
+            </div>
             <HomeButtons randomid={handleChange} />
              { enable ? <ShowComments/> : null} 
-            
-        </div>
+        </div>     
     );
 }
 export default HomePage

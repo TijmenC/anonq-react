@@ -32,6 +32,7 @@ function Question({ question, polls }) {
     };
 
     return (
+        <div className="centered-wrapper">
         <div className="rounded container">
             <Row className="justify-content-md-left">
                 <Col md sm="8">
@@ -50,6 +51,7 @@ function Question({ question, polls }) {
                 ))}
             </Row>
         </div>
+    </div>
     );
 }
 export default Question;

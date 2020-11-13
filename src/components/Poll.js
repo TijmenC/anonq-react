@@ -21,7 +21,7 @@ function Poll({ polls, percentages, toggle }) {
       )
 
     return (
-        <div className="rounded container">
+        <div className="flex rounded container">
             <Row className="justify-content-md-left">
                 <Col>
                     <Button disabled={toggle} variant="primary" size="lg" onClick={handleClick} block>
