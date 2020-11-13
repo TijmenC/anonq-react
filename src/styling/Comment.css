@@ -13,5 +13,7 @@ hr { display: block; height: 1px;
       overflow: scroll;
       overflow-x: hidden;
     } 
-    
-    
+    .questionHead{
+      width: 70vw;
+      margin-top: 4rem;
+  }

@@ -1,10 +1,7 @@
 import React from 'react';
-import logo from '../images/logo.png';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../styling/Navigationbar.css';
 import { Navbar, Nav, Image } from 'react-bootstrap';
-import QuestionIcon from '../images/QuestionIcon.svg';
-import HomeIcon from '../images/home.svg';
 import {
   Link
 } from "react-router-dom";
@@ -16,17 +13,17 @@ function Navigationbar() {
       <Nav className="container-fluid">
         <Navbar.Brand>
         <Link to="/">
-          <img src={logo} alt="error" width="100" height="50" className="d-inline-block align-top" />
+          <img src={process.env.PUBLIC_URL + '/images/logo.png'} alt="error" width="100" height="50" className="d-inline-block align-top" />
           </Link>
         AnonQ
       </Navbar.Brand>
         <Nav.Item className="ml-auto">
             <Link to="/">
-            <Image src={HomeIcon}></Image >
+            <Image src={process.env.PUBLIC_URL + '/images/QuestionIcon.svg'}></Image >
             </Link>
             |
             <Link to="/AskQuestion">
-            <Image src={QuestionIcon}></Image >
+            <Image src={process.env.PUBLIC_URL + '/images/home.svg'}></Image >
             </Link>
 
         </Nav.Item>
