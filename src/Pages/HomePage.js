@@ -28,18 +28,18 @@ function HomePage() {
     };
 
     useEffect(() => {
+        GetQuestionData(id)
+    }, [id]);
+
+    const GetQuestionData = (id) => {
         QuestionService.GetQuestionAndPolls(id).then((res) => {
             setFullQuestion((prevState) => ({ ...prevState, question: res.data.question }));
             setFullQuestion((prevState) => ({ ...prevState, poll: res.data.poll }));
         })
-            // .catch((error) => {
-            //     console.log(error.response.data);
-            // });
         CommentService.GetComment(id).then((res) => {
             setComments(res.data)
         })
-
-    }, [id]);
+    }
     useEffect(() => {
         setEnable(fullQuestion.question.commentsEnabled)
     },
@@ -59,7 +59,7 @@ function HomePage() {
             {comments.map((comments) => (
                 <Comment key={comments.id} sentcomments={comments} />
             ))}
-            <CreateComment sentquestionid={fullQuestion.question.id} />
+            <CreateComment sentquestionid={fullQuestion.question.id} sentgetquestions={GetQuestionData} />
             </div>
         </div>
     )

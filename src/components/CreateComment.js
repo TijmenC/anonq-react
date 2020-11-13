@@ -5,7 +5,7 @@ import { Row, Col, Form, Button } from 'react-bootstrap';
 import QuestionService from "../Services/CommentService"
 
 
-function CreateComment({sentquestionid}) {
+function CreateComment({sentquestionid, sentgetquestions}) {
     const [comment, setComment] = useState(
         {
             Text: '',
@@ -30,6 +30,7 @@ function CreateComment({sentquestionid}) {
         .catch((error) => {
             console.log(error.response.data);
         });
+        sentgetquestions(sentquestionid)
     };
     return (
         <div className="rounded container">
