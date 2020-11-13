@@ -1,8 +1,6 @@
 import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css'
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { Row, Col, Figure } from 'react-bootstrap';
-import skip from '../images/skip.png'
-import report from '../images/report.png';
 import { Link, } from "react-router-dom";
 
 function HomeButtons({randomid}) {
@@ -19,7 +17,7 @@ function HomeButtons({randomid}) {
                                 <Figure.Image
                                     width={50}
                                     height={50}
-                                    src={report}
+                                    src={process.env.PUBLIC_URL + '/images/report.png'}
                                 />
                             </Link>
                             <figcaption class="figure-caption text-middle">Report</figcaption>
@@ -33,7 +31,7 @@ function HomeButtons({randomid}) {
                                 <Figure.Image
                                     width={50}
                                     height={50}
-                                    src={skip}
+                                     src={process.env.PUBLIC_URL + '/images/skip.png'}
                                 />
                             </Link>
                             <figcaption class="figure-caption text-middle">Skip</figcaption>

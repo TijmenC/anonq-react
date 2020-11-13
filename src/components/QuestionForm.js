@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Button, Form } from 'react-bootstrap';
 import '../styling/QuestionForm.css';
-import QuestionService from "../Services/QuestionService"
+import QuestionService from "../services/QuestionService"
 import { useHistory } from 'react-router-dom';
    
 
@@ -35,7 +35,7 @@ function QuestionForm() {
 
     const addPoll = () => {
         setPoll([...poll, { poll: '' }]);
-        // setFullQuestion((oldArray) => ({...oldArray, poll: [{poll:''}] }));
+         // setFullQuestion((oldArray) => ({...oldArray, poll: [{poll:''}] }));
     };
     const handlePollChange = (e) => {
         const updatedPolls = [...poll];
