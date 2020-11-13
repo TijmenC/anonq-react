@@ -47,6 +47,7 @@ function HomePage() {
 
     const ShowComments = () => (   
         <div>
+            <div className="FormStyling2">
             <Row className="justify-content-md-left ">
                 <Col md="1">
                 <b><h2>Comments</h2></b>
@@ -60,6 +61,7 @@ function HomePage() {
             ))}
             <CreateComment sentquestionid={fullQuestion.question.id} />
             </div>
+        </div>
     )
 
 

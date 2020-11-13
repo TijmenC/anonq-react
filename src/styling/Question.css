@@ -16,9 +16,7 @@
 .skip {
     text-align: right;
 }
-  .centered-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* min-height: 100vh; */
-  }
+.questionHead{
+    width: 70vw;
+    margin-top: 4rem;
+}
