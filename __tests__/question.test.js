@@ -1,26 +1,24 @@
-import axios from "axios"
-// import HomePage from "../src/pages/HomePage"
+// Link.react.test.js
+import React from 'react';
+import renderer from 'react-test-renderer';
+import Link from './link.react.js'
 
-jest.mock('axios')
+test('Link changes the class when hovered', () => {
+  const component = renderer.create(
+    <Link page="http://www.facebook.com">Facebook</Link>,
+  );
+  let tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
 
-describe("Subject routing tests", () => {
+  // manually trigger the callback
+  tree.props.onMouseEnter();
+  // re-rendering
+  tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
 
-    it("Should get all questions", async () => {
-        const questions = [
-        {
-            question: { title: 'Title', description: 'Description', tag: 'Tag', commentsenabled: 'true' },
-            poll: [{ poll: 'poll' }]
-        },
-        {
-            question: { title: 'Title2', description: 'Description2', tag: 'Tag2', commentsenabled: 'true' },
-            poll: [{ poll: 'poll2' }]
-        }
-
-        ]
-        const resp = {data: questions}
-        axios.get.mockResolvedValue(resp)
-        return HomePage.useEffect().then(data => expect(data).ToEqual(questions))
-      
-       
-    });
-})
+  // manually trigger the callback
+  tree.props.onMouseLeave();
+  // re-rendering
+  tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
