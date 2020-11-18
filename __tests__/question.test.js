@@ -1,5 +1,5 @@
 import axios from "axios"
-import HomePage from "../src/pages/HomePage"
+// import HomePage from "../src/pages/HomePage"
 
 jest.mock('axios')
 

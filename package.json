@@ -1,28 +1,6 @@
 {
   "name": "anonq-react",
   "version": "0.1.0",
-  "configurations": [
-    {
-      "name": "Debug CRA Tests",
-      "type": "node",
-      "request": "launch",
-      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/react-scripts",
-      "args": [
-        "test",
-        "--runInBand",
-        "--no-cache",
-        "--watchAll=false"
-      ],
-      "cwd": "${workspaceRoot}",
-      "protocol": "inspector",
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
-      "env": {
-        "CI": "true"
-      },
-      "disableOptimisticBPs": true
-    }
-  ],
   "private": true,
   "dependencies": {
     "@babel/core": "^7.12.3",
@@ -34,23 +12,6 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
-    },
-    "roots": [
-      "<rootDir>",
-      "src"
-    ],
-    "modulePaths": [
-      "<rootDir>",
-      "src"
-    ],
-    "moduleDirectories": [
-      "node_modules"
-    ]
   },
   "scripts": {
     "stop": "taskkill -F -IM node.exe",
@@ -79,6 +40,10 @@
     "@babel/preset-typescript": "^7.12.1",
     "@testing-library/dom": "^7.26.5",
     "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0"
+    "@testing-library/react": "^9.5.0",
+    "jest": "24.9.0",
+    "babel-jest": "24.9.0",
+    "jest-react-native": "18.0.0",
+    "react-test-renderer": "17.0.1"
   }
 }

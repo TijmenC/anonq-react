@@ -4,8 +4,8 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import AskQuestionPage from './Pages/AskQuestionPage';
-import HomePage from './Pages/HomePage';
+import AskQuestionPage from './pages/AskQuestionPage';
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
