@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Button, Form } from 'react-bootstrap';
-import axios from "axios";
 import '../styling/QuestionForm.css';
+import QuestionService from "../services/QuestionService"
+import { useHistory } from 'react-router-dom';
+   
 
 
 
 function QuestionForm() {
+    /*Save history of Router */
+    const history = useHistory()
+
     /* Checkbox setstate */
     const [commentEnable, setCommentEnable] = useState(false)
 
@@ -26,12 +31,11 @@ function QuestionForm() {
     };
 
     /* Poll setstate */
-    const [poll, setPoll] = useState([
-        { poll: '' }
-    ]);
+    const [poll, setPoll] = useState([]);
+
     const addPoll = () => {
         setPoll([...poll, { poll: '' }]);
-        // setFullQuestion((oldArray) => ({...oldArray, poll: [{poll:''}] }));
+         // setFullQuestion((oldArray) => ({...oldArray, poll: [{poll:''}] }));
     };
     const handlePollChange = (e) => {
         const updatedPolls = [...poll];
@@ -44,12 +48,21 @@ function QuestionForm() {
     const handleSubmit = async (e) => {
         setFullQuestion((prevState) => ({ ...prevState, poll: poll }));
         e.preventDefault()
-        await axios.post('https://localhost:44348/api/Question', fullQuestion).then((res) => {
+    };
+    useEffect(() => {
+        async function PostQuestion(){
+            await QuestionService.PostQuestion(fullQuestion).then((res) => {
             console.log(res);
             console.log(res.data);
         })
-    };
-
+        let path = `/`; 
+        history.push(path);
+    }
+    PostQuestion();
+    //Because I use fullQuestion to set the state outside the useEffect()
+     // eslint-disable-next-line 
+    }, [fullQuestion.poll]);
+    
 
 
     return (
@@ -68,20 +81,22 @@ function QuestionForm() {
                                 <Form.Label><h4>Title</h4></Form.Label>
                                 <Form.Control placeholder="Enter Title" name="title" value={fullQuestion.question.title} onChange={handleChange} required />
                             </Form.Group>
+                            
                         </Col>
                     </Row>
                     <Row className="justify-content-md-center">
                         <Col md="8">
                             <Form.Group controlId="exampleForm.ControlTextarea1">
                                 <Form.Label><h4>Description</h4></Form.Label>
-                                <Form.Control placeholder="Enter Description" name="description" value={fullQuestion.question.description} onChange={handleChange} as="textarea" rows="3" />
+                                <Form.Control required placeholder="Enter Description" name="description" value={fullQuestion.question.description} onChange={handleChange} as="textarea" rows="3" />
                             </Form.Group>
                         </Col>
                     </Row>
                     <Row className="justify-content-md-center">
                         <Col md="8">
                             <Form.Label><h4>Tag</h4></Form.Label>
-                            <Form.Control as="select" name="tag" value={fullQuestion.question.tag} onChange={handleChange}>
+                            <Form.Control required as="select" name="tag" value={fullQuestion.question.tag} defaultValue="help" onChange={handleChange}>
+                                <option label="Select Tag" hidden ></option>
                                 <option>Personal</option>
                                 <option>Relationship</option>
                                 <option>Abuse</option>
@@ -112,6 +127,7 @@ function QuestionForm() {
                                             <div key={`poll-${idx}`}>
                                                 <Form.Label>{`Poll #${idx + 1}`}</Form.Label>
                                                 <Form.Control
+                                                    required
                                                     type="text"
                                                     data-idx={idx}
                                                     className="poll"

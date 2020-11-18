@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import 'bootstrap/dist/css/bootstrap.min.css'
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../styling/Question.css'
 import { Row, Col } from 'react-bootstrap';
 import Poll from "./Poll";
+import PollService from "../services/PollService"
 
 
 
@@ -20,15 +20,19 @@ function Question({ question, polls }) {
 
     const getPercentages = async (questionid) => {
         setToggle(!toggle);
-        await axios.get("https://localhost:44348/api/polls/" + questionid + "/getPercentages").then((res) => {
+        await PollService.GetPollPercentages(questionid).then((res) => {
             console.log(res);
             console.log(res.data);
             setPolls(res.data)
+        })
+        .catch((error) => {
+            console.log(error.response.data);
         });
+        
     };
 
-    return (
-        <div className="rounded container">
+    return ( 
+        <div className="questionHead mx-auto">
             <Row className="justify-content-md-left">
                 <Col md sm="8">
                     <b><h3>{question.title}</h3></b>
@@ -45,7 +49,7 @@ function Question({ question, polls }) {
                     <Poll key={viewpolls.id} polls={viewpolls} percentages={getPercentages} toggle={toggle} />
                 ))}
             </Row>
-        </div>
+    </div>
     );
 }
 export default Question;

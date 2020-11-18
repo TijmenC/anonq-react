@@ -16,3 +16,7 @@
 .skip {
     text-align: right;
 }
+.questionHead{
+    width: 70vw;
+    margin-top: 4rem;
+}
