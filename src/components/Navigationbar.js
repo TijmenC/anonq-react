@@ -13,17 +13,17 @@ function Navigationbar() {
       <Nav className="container-fluid">
         <Navbar.Brand>
         <Link to="/">
-          <img src={process.env.PUBLIC_URL + '/images/logo.png'} alt="error" width="100" height="50" className="d-inline-block align-top" />
+          <img src='/images/logo.png' alt="error" width="100" height="50" className="d-inline-block align-top" />
           </Link>
         AnonQ
       </Navbar.Brand>
         <Nav.Item className="ml-auto">
             <Link to="/">
-            <Image src={process.env.PUBLIC_URL + '/images/home.svg'}></Image >
+            <Image src='/images/home.svg'></Image >
             </Link>
             |
             <Link to="/AskQuestion">
-            <Image src={process.env.PUBLIC_URL + '/images/QuestionIcon.svg'}></Image >
+            <Image src='/images/QuestionIcon.svg'></Image >
             </Link>
 
         </Nav.Item>
