@@ -19,11 +19,11 @@ function Navigationbar() {
       </Navbar.Brand>
         <Nav.Item className="ml-auto">
             <Link to="/">
-            <Image src={process.env.PUBLIC_URL + '/images/QuestionIcon.svg'}></Image >
+            <Image src={process.env.PUBLIC_URL + '/images/home.svg'}></Image >
             </Link>
             |
             <Link to="/AskQuestion">
-            <Image src={process.env.PUBLIC_URL + '/images/home.svg'}></Image >
+            <Image src={process.env.PUBLIC_URL + '/images/QuestionIcon.svg'}></Image >
             </Link>
 
         </Nav.Item>
