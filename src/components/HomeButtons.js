@@ -17,7 +17,7 @@ function HomeButtons({randomid}) {
                                 <Figure.Image
                                     width={50}
                                     height={50}
-                                    src={process.env.PUBLIC_URL + '/images/report.png'}
+                                    src='/images/report.png'
                                 />
                             </Link>
                             <figcaption class="figure-caption text-middle">Report</figcaption>
@@ -31,7 +31,7 @@ function HomeButtons({randomid}) {
                                 <Figure.Image
                                     width={50}
                                     height={50}
-                                     src={process.env.PUBLIC_URL + '/images/skip.png'}
+                                     src='/images/skip.png'
                                 />
                             </Link>
                             <figcaption class="figure-caption text-middle">Skip</figcaption>

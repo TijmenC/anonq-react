@@ -21,13 +21,20 @@ function QuestionForm() {
     const [fullQuestion, setFullQuestion] = useState(
         {
             question: { title: '', description: '', tag: '', commentsenabled: '' },
-            poll: [{ poll: '' }]
+            poll: [{ poll: '' }],
+            expiretime: ''
+  
         }
     );
     const handleChange = (event) => {
         const eventname = event.target.name
         const eventvalue = event.target.value
         setFullQuestion((prevState) => ({ ...prevState, question: { ...prevState.question, [eventname]: eventvalue } }));
+    };
+    const handleChangeDeletionTime = (event) => {
+        const eventname = event.target.name
+        const eventvalue = Number.parseInt(event.target.value, 10)
+        setFullQuestion((prevState) => ({ ...prevState, [eventname]: eventvalue } ));
     };
 
     /* Poll setstate */
@@ -100,6 +107,19 @@ function QuestionForm() {
                                 <option>Personal</option>
                                 <option>Relationship</option>
                                 <option>Abuse</option>
+                            </Form.Control>
+                        </Col>
+                    </Row>
+                    <Row className="justify-content-md-center">
+                        <Col md="8">
+                            <br />
+                            <Form.Label><h4>Deleted in</h4></Form.Label>
+                            <Form.Control required as="select" name="expiretime" value={fullQuestion.expiretime} onChange={handleChangeDeletionTime}>
+                                <option label="Select hours" hidden ></option>
+                                <option>3</option>
+                                <option>6</option>
+                                <option>12</option>
+                                <option>24</option>
                             </Form.Control>
                         </Col>
                     </Row>
