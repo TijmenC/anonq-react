@@ -1,24 +1,19 @@
-// Link.react.test.js
-import React from 'react';
-import renderer from 'react-test-renderer';
-import Link from './link.react.js'
+import { getByTestId, render, screen, waitFor, fireEvent } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import Question from "../src/components/Question"
 
-test('Link changes the class when hovered', () => {
-  const component = renderer.create(
-    <Link page="http://www.facebook.com">Facebook</Link>,
-  );
-  let tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
+import QuestionService from "../src/services/QuestionService";
 
-  // manually trigger the callback
-  tree.props.onMouseEnter();
-  // re-rendering
-  tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
+jest.mock("../src/services/QuestionService");
+const questioninput = { title: "Title", description: 'Description', tag: 'Tag', commentsenabled: 'true' }
 
-  // manually trigger the callback
-  tree.props.onMouseLeave();
-  // re-rendering
-  tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
+describe("Question rendering test", () => {
+  it.only('Test Question component renders', () => { 
+
+
+    render(<Question question={questioninput} />);
+
+        const titleLabel = screen.getByTestId("question-label-title");
+        expect(titleLabel.value).toBe("Title");
+  })
 });

@@ -34,7 +34,7 @@ function Question({ question, polls }) {
     return ( 
         <div className="questionHead mx-auto">
             <Row className="justify-content-md-left">
-                <Col md sm="8">
+                <Col md sm="8" data-testid="question-label-title">
                     <b><h3>{question.title}</h3></b>
                 </Col>
             </Row>
