@@ -10,9 +10,9 @@ describe("Comment rendering test", () => {
   it.only('Test Comment component renders', () => { 
 
 
-    render(<Comment sentcomments={questioninput} />);
+       const { queryByTestId } = render(<Comment sentcomments={questioninput} />);
 
-        const commentLabel = screen.getByTestId("question-label-comment");
-        expect(commentLabel).toBe("Anonymous");
+        const commentLabel = queryByTestId("question-label-title");
+        expect(commentLabel.innerHTML).toBe("comment");
   })
 });

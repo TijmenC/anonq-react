@@ -86,7 +86,7 @@ function QuestionForm() {
                         <Col md="8">
                             <Form.Group controlId="title">
                                 <Form.Label><h4>Title</h4></Form.Label>
-                                <Form.Control placeholder="Enter Title" name="title" value={fullQuestion.question.title} onChange={handleChange} required />
+                                <Form.Control placeholder="Enter Title" name="title" value={fullQuestion.question.title} onChange={handleChange} data-testid="questionform-input-title" required />
                             </Form.Group>
                             
                         </Col>
