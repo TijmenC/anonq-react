@@ -1,4 +1,4 @@
-import { getByTestId, render, screen, waitFor, fireEvent } from '@testing-library/react';
+import { getByTestId, render, screen, waitFor, fireEvent, queryByTestId } from '@testing-library/react';
 import React from "react";
 import { MemoryRouter } from 'react-router-dom';
 import Comment from "../src/components/Comment"
@@ -12,7 +12,7 @@ describe("Comment rendering test", () => {
 
     render(<Comment sentcomments={questioninput} />);
 
-        const titleLabel = screen.getByTestId("question-label-comment");
-        expect(titleLabel.value).toBe("Anonymous");
+        const commentLabel = screen.getByTestId("question-label-comment");
+        expect(commentLabel).toBe("Anonymous");
   })
 });

@@ -12,15 +12,17 @@ function Comment({sentcomments}) {
                 <img src='/images/logo.png' alt="error" width="100" height="50" />
                 </Col>
                 <Col md="1">
-                    <b><h5>Anonymous</h5></b>
+
+                    <b>  <div data-testid="question-label-comment">Anonymous</div></b>
+              
                 </Col>
             </Row>
             <br />
             <Row className="justify-content-md-left">
                 <Col md sm="12">
-                    <h8 >
+                        <h6>
                         {sentcomments.text}
-                        </h8>
+                        </h6> 
                 </Col>
             </Row>
         </div>
