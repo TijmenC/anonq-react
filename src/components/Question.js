@@ -17,9 +17,9 @@ function Question({ question, polls }) {
       }, [polls]);
 
 
-    const getPercentages = async (questionid) => {
+    const getPercentages = (questionid) => {
         setToggle(!toggle);
-        await PollService.GetPollPercentages(questionid).then((res) => {
+         PollService.GetPollPercentages(questionid).then((res) => {
             console.log(res);
             console.log(res.data);
             setPolls(res.data)

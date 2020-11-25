@@ -18,7 +18,9 @@ function Comment({sentcomments}) {
             <br />
             <Row className="justify-content-md-left">
                 <Col md sm="12">
-                    <h8>{sentcomments.text}</h8>
+                    <h8 >
+                        {sentcomments.text}
+                        </h8>
                 </Col>
             </Row>
         </div>
