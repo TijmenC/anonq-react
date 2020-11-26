@@ -3,6 +3,7 @@ import { Row, Col, Button, Form } from 'react-bootstrap';
 import '../styling/QuestionForm.css';
 import QuestionService from "../services/QuestionService"
 import { useHistory } from 'react-router-dom';
+import Cookies from 'js-cookie'
    
 
 
@@ -61,6 +62,7 @@ function QuestionForm() {
             await QuestionService.PostQuestion(fullQuestion).then((res) => {
             console.log(res);
             console.log(res.data);
+            Cookies.set('QuestionID', res.data.id, { expires:  new Date(res.data.deletionTime) })
         })
         let path = `/`; 
         history.push(path);
