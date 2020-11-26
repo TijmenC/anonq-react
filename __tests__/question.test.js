@@ -16,9 +16,8 @@ describe("Question rendering test", () => {
 
        const mockFn = QuestionService.PostQuestion.mockImplementation(data => {
        console.log(data);
-       return {data: {
-         Code: "200"
-       }}
+       return {response: {status: 200}
+       }
        });
 
  const { queryByTestId } = render(<MemoryRouter initialEntries={["/"]}><QuestionForm /></MemoryRouter>);

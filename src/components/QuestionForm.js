@@ -63,7 +63,7 @@ function QuestionForm() {
         if (rendered == true) {
             async function PostQuestion() {
                 let ApiResponse = await QuestionService.PostQuestion(fullQuestion)
-                console.log(ApiResponse.data)
+                console.log(ApiResponse)
                 let path = `/`;
                 history.push(path);
             }
