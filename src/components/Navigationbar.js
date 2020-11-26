@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../styling/Navigationbar.css';
+import SavedQuestions from "../components/SavedQuestions"
 import { Navbar, Nav, Image } from 'react-bootstrap';
 import {
   Link
@@ -12,19 +13,22 @@ function Navigationbar() {
     <Navbar fixed="top" bg="dark" variant="dark">
       <Nav className="container-fluid">
         <Navbar.Brand>
-        <Link to="/">
-          <img src='/images/logo.png' alt="error" width="100" height="50" className="d-inline-block align-top" />
+          <Link to="/">
+            <img src='/images/logo.png' alt="error" width="100" height="50" className="d-inline-block align-top" />
           </Link>
         AnonQ
       </Navbar.Brand>
+      <Nav.Item className="ml-auto">
+        <SavedQuestions />
+      </Nav.Item>
         <Nav.Item className="ml-auto">
-            <Link to="/">
+          <Link to="/">
             <Image src='/images/home.svg'></Image >
-            </Link>
+          </Link>
             |
             <Link to="/AskQuestion">
             <Image src='/images/QuestionIcon.svg'></Image >
-            </Link>
+          </Link>
 
         </Nav.Item>
       </Nav>
