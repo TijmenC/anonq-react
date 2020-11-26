@@ -62,10 +62,8 @@ function QuestionForm() {
     useEffect(() => {
         if (rendered == true) {
             async function PostQuestion() {
-                await QuestionService.PostQuestion(fullQuestion).then((res) => {
-                    console.log(res);
-                    console.log(res.data);
-                })
+                let ApiResponse = await QuestionService.PostQuestion(fullQuestion)
+                console.log(ApiResponse.data)
                 let path = `/`;
                 history.push(path);
             }

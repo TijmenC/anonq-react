@@ -9,17 +9,19 @@ import "regenerator-runtime/runtime.js";
 import QuestionService from "../src/services/QuestionService";
 
 jest.mock("../src/services/QuestionService");
-jest.mock("../src/common-api.js");
-jest.mock('axios');
-// const questioninput = { title: "Title", description: 'Description', tag: 'Tag', commentsenabled: 'true' }
+
 
 describe("Question rendering test", () => {
   it.only('Test QuestionForm component renders', () => { 
 
        const mockFn = QuestionService.PostQuestion.mockImplementation(data => {
        console.log(data);
+       return {data: {
+         Code: "200"
+       }}
        });
- const { queryByTestId } = render(<QuestionForm />);
+
+ const { queryByTestId } = render(<MemoryRouter initialEntries={["/"]}><QuestionForm /></MemoryRouter>);
 
 
     const inputTitle = queryByTestId("questionform-input-title");
@@ -41,7 +43,6 @@ describe("Question rendering test", () => {
     const inputComments = screen.getByTestId("questionform-input-comments");
     fireEvent.change(inputComments, { target: { value: 'false' } });
     expect(inputComments.value).toBe("false");
-
 
 
 
