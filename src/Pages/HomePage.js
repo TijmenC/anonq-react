@@ -16,7 +16,6 @@ function HomePage(props) {
             poll: [{ poll: '' }]
         }
     );
-    console.log("about", props.location.props)
     const [comments, setComments] = useState([]);
 
     const [id, setID] = useState(2);
