@@ -8,7 +8,7 @@ import Comment from "../components/Comment"
 import { Row, Col } from 'react-bootstrap';
 import CreateComment from "../components/CreateComment";
 
-function HomePage() {
+function HomePage(props) {
     const [enable, setEnable] = useState();
     const [fullQuestion, setFullQuestion] = useState(
         {
@@ -16,6 +16,7 @@ function HomePage() {
             poll: [{ poll: '' }]
         }
     );
+    console.log("about", props.location.props)
     const [comments, setComments] = useState([]);
 
     const [id, setID] = useState(2);
@@ -27,7 +28,7 @@ function HomePage() {
         });
     };
 
-    useEffect(() => {
+    useEffect((id) => {
         GetQuestionData(id)
     }, [id]);
 

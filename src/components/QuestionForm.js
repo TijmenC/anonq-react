@@ -11,7 +11,6 @@ import Cookies from 'js-cookie'
 function QuestionForm() {
     /*Save history of Router */
     const history = useHistory()
-    const [questioncookies, setQuestioncookies] = useState([Cookies.get()])
     /* Checkbox setstate */
     const [commentEnable, setCommentEnable] = useState(false)
 
