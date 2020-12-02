@@ -17,6 +17,11 @@ function HomePage(props) {
         }
     );
     const [comments, setComments] = useState([]);
+    const [CookieID, setCookieID] = useState(props.match.params.id);
+    
+    useEffect(() => {
+        setID(props.match.params.id);
+    }, [props.match.params.id]);
 
     const [id, setID] = useState(2);
 
@@ -27,11 +32,11 @@ function HomePage(props) {
         });
     };
 
-    useEffect((id) => {
-        GetQuestionData(id)
+    useEffect(() => {
+        GetQuestionData()
     }, [id]);
 
-    const GetQuestionData = (id) => {
+    const GetQuestionData = () => {
         QuestionService.GetQuestionAndPolls(id).then((res) => {
             setFullQuestion((prevState) => ({ ...prevState, question: res.data.question }));
             setFullQuestion((prevState) => ({ ...prevState, poll: res.data.poll }));

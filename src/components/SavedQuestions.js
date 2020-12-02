@@ -14,16 +14,12 @@ function SavedQuestions() {
 
   return (
     <Dropdown onClick={getCookies}>
-      <Dropdown.Toggle id="dropdown-basic">
+      <Dropdown.Toggle size="sm" id="dropdown-basic">
         Questions
 </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Link to={{pathname:'/',
-        props:{
-          id: questioncookies.QuestionID
-        }
-      }} >
-          <Dropdown.Item href="#/action-1">{questioncookies.QuestionID}</Dropdown.Item>
+      <Link to={"/" + questioncookies.QuestionID}>
+          <Dropdown.Item href="#/action-1">Your Question</Dropdown.Item>
         </Link>
       </Dropdown.Menu>
     </Dropdown>

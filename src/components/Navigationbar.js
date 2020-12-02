@@ -18,9 +18,7 @@ function Navigationbar() {
           </Link>
         AnonQ
       </Navbar.Brand>
-      <Nav.Item className="ml-auto">
-        <SavedQuestions />
-      </Nav.Item>
+      <SavedQuestions />
         <Nav.Item className="ml-auto">
           <Link to="/">
             <Image src='/images/home.svg'></Image >
@@ -29,7 +27,6 @@ function Navigationbar() {
             <Link to="/AskQuestion">
             <Image src='/images/QuestionIcon.svg'></Image >
           </Link>
-
         </Nav.Item>
       </Nav>
     </Navbar>
