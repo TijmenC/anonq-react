@@ -32,17 +32,17 @@ function Question({ question, polls }) {
 
     return ( 
         <div className="questionHead mx-auto">
-            <Row className="justify-content-md-left">
-                <Col md sm="8" data-testid="question-label-title">
+            <Row className="justify-content-md-left" data-testid="question-label-title">
+                <Col md sm="8">
                     <b><h3>{question.title}</h3></b>
                 </Col>
             </Row>
-            <Row className="justify-content-md-left">
+            <Row className="justify-content-md-left" data-testid="question-label-description">
                 <Col md sm="12">
                     <b><h8>{question.description}</h8></b>
                 </Col>
             </Row>
-            <Row className="justify-content-md-left">
+            <Row className="justify-content-md-left" data-testid="question-label-polls">
                 <br />
                 {viewpolls.map((viewpolls) => (
                     <Poll key={viewpolls.id} polls={viewpolls} percentages={getPercentages} toggle={toggle} />
