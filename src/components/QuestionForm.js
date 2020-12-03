@@ -4,6 +4,8 @@ import '../styling/QuestionForm.css';
 import QuestionService from "../services/QuestionService"
 import { useHistory } from 'react-router-dom';
 
+import Cookies from 'js-cookie'
+   
 
 
 
@@ -12,7 +14,6 @@ function QuestionForm() {
     const [rendered, setRendered] = useState(false)
     /*Save history of Router */
     const history = useHistory()
-
     /* Checkbox setstate */
     const [commentEnable, setCommentEnable] = useState(false)
 

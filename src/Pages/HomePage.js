@@ -8,7 +8,7 @@ import Comment from "../components/Comment"
 import { Row, Col } from 'react-bootstrap';
 import CreateComment from "../components/CreateComment";
 
-function HomePage() {
+function HomePage(props) {
     const [enable, setEnable] = useState();
     const [fullQuestion, setFullQuestion] = useState(
         {
@@ -17,6 +17,11 @@ function HomePage() {
         }
     );
     const [comments, setComments] = useState([]);
+
+    
+    useEffect(() => {
+        setID(props.match.params.id);
+    }, [props.match.params.id]);
 
     const [id, setID] = useState(2);
 
@@ -28,10 +33,10 @@ function HomePage() {
     };
 
     useEffect(() => {
-        GetQuestionData(id)
+        GetQuestionData()
     }, [id]);
 
-    const GetQuestionData = (id) => {
+    const GetQuestionData = () => {
         QuestionService.GetQuestionAndPolls(id).then((res) => {
             setFullQuestion((prevState) => ({ ...prevState, question: res.data.question }));
             setFullQuestion((prevState) => ({ ...prevState, poll: res.data.poll }));
