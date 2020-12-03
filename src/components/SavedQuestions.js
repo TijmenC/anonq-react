@@ -20,13 +20,13 @@ function SavedQuestions() {
         {(() => {
           if (questioncookies.QuestionID != null) {
             return (
-              <div data-testid="savedquestions-label-question"> <Link to={"/" + questioncookies.QuestionID}>
+              <div > <Link to={"/" + questioncookies.QuestionID}>
                 {togglecookies ? <Dropdown.Item href="#/action-1">Your Question</Dropdown.Item> : null}
               </Link></div>
             )
           } else {
             return (
-              <div><Dropdown.Item>No Questions found</Dropdown.Item></div>
+              <div ><Dropdown.Item>No Questions found</Dropdown.Item></div>
             )
           }
         })()}
@@ -39,7 +39,7 @@ function SavedQuestions() {
       <Dropdown.Toggle size="sm" id="dropdown-basic">
         Questions
 </Dropdown.Toggle>
-      <Dropdown.Menu>
+      <Dropdown.Menu data-testid="savedquestions-label-question">
         <ShowSavedQuestion />
       </Dropdown.Menu>
     </Dropdown>
