@@ -20,7 +20,7 @@ function SavedQuestions() {
         {(() => {
           if (questioncookies.QuestionID != null) {
             return (
-              <div> <Link to={"/" + questioncookies.QuestionID}>
+              <div data-testid="savedquestions-label-question"> <Link to={"/" + questioncookies.QuestionID}>
                 {togglecookies ? <Dropdown.Item href="#/action-1">Your Question</Dropdown.Item> : null}
               </Link></div>
             )
