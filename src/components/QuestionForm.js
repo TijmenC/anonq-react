@@ -157,7 +157,7 @@ function QuestionForm() {
                                                     className="poll"
                                                     value={poll[idx].poll}
                                                     onChange={handlePollChange}
-                                                    data-testid="questionform-input-poll"
+                                                    data-testid={idx}
                                                 />
                                             </div>
                                         </Form.Group>
