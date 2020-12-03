@@ -28,8 +28,8 @@ describe("Question rendering test", () => {
        const labelDescription = getByTestId("question-label-description");
        expect(labelDescription.textContent).toBe(mockQuestion.description);
        const labelPolls = getByTestId("question-label-polls");
-       expect(mockPolls).toContain(
-        [{ poll: labelPolls.textContent }]
+       expect(mockPolls).toContainEqual( // Compare values only.
+        { poll: labelPolls.textContent }
       )
       // const { getByTestId } = render(<MemoryRouter initialEntries={["/"]}><Poll question={mockQuestion} polls={mockPolls} /></MemoryRouter>);
       //const inputTitle = getByText(mockQuestion.title);
