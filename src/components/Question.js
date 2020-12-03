@@ -42,7 +42,7 @@ function Question({ question, polls }) {
                     <b><h8>{question.description}</h8></b>
                 </Col>
             </Row>
-            <Row className="justify-content-md-left" data-testid="question-label-polls">
+            <Row className="justify-content-md-left" >
                 <br />
                 {viewpolls.map((viewpolls) => (
                     <Poll key={viewpolls.id} polls={viewpolls} percentages={getPercentages} toggle={toggle} />
