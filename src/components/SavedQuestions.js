@@ -6,10 +6,32 @@ import {
 } from "react-router-dom";
 import Cookies from 'js-cookie'
 function SavedQuestions() {
-
+  const [togglecookies, setToggleCookies] = useState(false)
   const [questioncookies, setQuestioncookies] = useState(Cookies.get)
   const getCookies = () => {
     setQuestioncookies(Cookies.get())
+    if (questioncookies.QuestionID != null) {
+      setToggleCookies(true)
+    }
+  }
+  const ShowSavedQuestion = () => {
+    return (
+      <div>
+        {(() => {
+          if (questioncookies.QuestionID != null) {
+            return (
+              <div> <Link to={"/" + questioncookies.QuestionID}>
+                {togglecookies ? <Dropdown.Item href="#/action-1">Your Question</Dropdown.Item> : null}
+              </Link></div>
+            )
+          } else {
+            return (
+              <div><Dropdown.Item>No Questions found</Dropdown.Item></div>
+            )
+          }
+        })()}
+      </div>
+    )
   }
 
   return (
@@ -18,9 +40,7 @@ function SavedQuestions() {
         Questions
 </Dropdown.Toggle>
       <Dropdown.Menu>
-      <Link to={"/" + questioncookies.QuestionID}>
-          <Dropdown.Item href="#/action-1">Your Question</Dropdown.Item>
-        </Link>
+        <ShowSavedQuestion />
       </Dropdown.Menu>
     </Dropdown>
   )

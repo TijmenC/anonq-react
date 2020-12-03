@@ -17,7 +17,7 @@ function HomePage(props) {
         }
     );
     const [comments, setComments] = useState([]);
-    const [CookieID, setCookieID] = useState(props.match.params.id);
+
     
     useEffect(() => {
         setID(props.match.params.id);

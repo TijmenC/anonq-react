@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 
 
+
 function Navigationbar() {
   return (
     <Navbar fixed="top" bg="dark" variant="dark">
@@ -18,7 +19,7 @@ function Navigationbar() {
           </Link>
         AnonQ
       </Navbar.Brand>
-      <SavedQuestions />
+       <SavedQuestions /> 
         <Nav.Item className="ml-auto">
           <Link to="/">
             <Image src='/images/home.svg'></Image >
