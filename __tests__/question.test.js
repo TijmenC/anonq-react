@@ -27,7 +27,9 @@ describe("Question rendering test", () => {
        expect(labelTitle.textContent).toBe(mockQuestion.title);
        const labelDescription = getByTestId("question-label-description");
        expect(labelDescription.textContent).toBe(mockQuestion.description);
-        const labelPolls = getAllByTestId("question-label-polls");
+        const labelPolls = getAllByTestId("0");
+        console.log(mockPolls[0].poll)
+        console.log(labelPolls)
       //  console.log(labelPolls.textContent)
       mockPolls.map(t => expect(t).toContain(labelPolls.map(t => "poll:" + t.textContent)))
       //  expect(mockPolls).toContainEqual( // Compare values only.
