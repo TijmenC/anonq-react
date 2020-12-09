@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import '../styling/Question.css'
 import { Row, Col } from 'react-bootstrap';
 import Poll from "./Poll";
-import PollService from "../services/PollService"
+import PollService from "../Services/PollService"
 
 
 

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../styling/Comment.css'
 import { Row, Col, Form, Button } from 'react-bootstrap';
-import QuestionService from "../services/CommentService"
+import QuestionService from "../Services/CommentService"
 
 
 function CreateComment({sentquestionid, sentgetquestions}) {

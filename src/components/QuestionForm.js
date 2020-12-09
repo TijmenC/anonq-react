@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Button, Form } from 'react-bootstrap';
 import '../styling/QuestionForm.css';
-import QuestionService from "../services/QuestionService"
+import QuestionService from "../Services/QuestionService"
 import { useHistory } from 'react-router-dom';
 
 import Cookies from 'js-cookie'

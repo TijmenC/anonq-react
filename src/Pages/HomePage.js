@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import Question from '../components/Question'
 import HomeButtons from '../components/HomeButtons'
-import QuestionService from "../services/QuestionService"
-import CommentService from "../services/CommentService"
+import QuestionService from "../Services/QuestionService"
+import CommentService from "../Services/CommentService"
 import Comment from "../components/Comment"
 import { Row, Col } from 'react-bootstrap';
 import CreateComment from "../components/CreateComment";

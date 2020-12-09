@@ -6,7 +6,7 @@ import QuestionForm from "../src/components/QuestionForm"
 import "regenerator-runtime/runtime.js";
 
 
-import QuestionService from "../src/services/QuestionService";
+import QuestionService from "../src/Services/QuestionService";
 
 jest.mock("../src/services/QuestionService");
 
