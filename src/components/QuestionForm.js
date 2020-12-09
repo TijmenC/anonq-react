@@ -3,12 +3,15 @@ import { Row, Col, Button, Form } from 'react-bootstrap';
 import '../styling/QuestionForm.css';
 import QuestionService from "../services/QuestionService"
 import { useHistory } from 'react-router-dom';
+
 import Cookies from 'js-cookie'
    
 
 
 
 function QuestionForm() {
+    /* rendered */
+    const [rendered, setRendered] = useState(false)
     /*Save history of Router */
     const history = useHistory()
     /* Checkbox setstate */
@@ -23,7 +26,7 @@ function QuestionForm() {
             question: { title: '', description: '', tag: '', commentsenabled: '' },
             poll: [{ poll: '' }],
             expiretime: ''
-  
+
         }
     );
     const handleChange = (event) => {
@@ -34,7 +37,7 @@ function QuestionForm() {
     const handleChangeDeletionTime = (event) => {
         const eventname = event.target.name
         const eventvalue = Number.parseInt(event.target.value, 10)
-        setFullQuestion((prevState) => ({ ...prevState, [eventname]: eventvalue } ));
+        setFullQuestion((prevState) => ({ ...prevState, [eventname]: eventvalue }));
     };
 
     /* Poll setstate */
@@ -42,7 +45,7 @@ function QuestionForm() {
 
     const addPoll = () => {
         setPoll([...poll, { poll: '' }]);
-         // setFullQuestion((oldArray) => ({...oldArray, poll: [{poll:''}] }));
+        // setFullQuestion((oldArray) => ({...oldArray, poll: [{poll:''}] }));
     };
     const handlePollChange = (e) => {
         const updatedPolls = [...poll];
@@ -53,21 +56,26 @@ function QuestionForm() {
 
     /* Post Question + Poll */
     const handleSubmit = async (e) => {
+        setRendered(true)
         setFullQuestion((prevState) => ({ ...prevState, poll: poll }));
         e.preventDefault()
     };
     useEffect(() => {
-            QuestionService.PostQuestion(fullQuestion).then((res) => {
-            console.log(res);
-            console.log(res.data);
-            Cookies.set('QuestionID', res.data.id, { expires:  new Date(res.data.deletionTime) })
-        let path = `/`; 
-        history.push(path);
-    })
-    // Because I use fullQuestion to set the state outside the useEffect()
-     // eslint-disable-next-line 
+
+        if (rendered == true) {
+            async function PostQuestion() {
+                let ApiResponse = await QuestionService.PostQuestion(fullQuestion)
+                console.log(ApiResponse)
+                let path = `/`;
+                history.push(path);
+            }
+            PostQuestion();
+            //Because I use fullQuestion to set the state outside the useEffect()
+            // eslint-disable-next-line 
+        }
+
     }, [fullQuestion.poll]);
-    
+
 
 
     return (
@@ -84,23 +92,23 @@ function QuestionForm() {
                         <Col md="8">
                             <Form.Group controlId="title">
                                 <Form.Label><h4>Title</h4></Form.Label>
-                                <Form.Control placeholder="Enter Title" name="title" value={fullQuestion.question.title} onChange={handleChange} required />
+                                <Form.Control placeholder="Enter Title" name="title" value={fullQuestion.question.title} onChange={handleChange} data-testid="questionform-input-title" required />
                             </Form.Group>
-                            
+
                         </Col>
                     </Row>
                     <Row className="justify-content-md-center">
                         <Col md="8">
                             <Form.Group controlId="exampleForm.ControlTextarea1">
                                 <Form.Label><h4>Description</h4></Form.Label>
-                                <Form.Control required placeholder="Enter Description" name="description" value={fullQuestion.question.description} onChange={handleChange} as="textarea" rows="3" />
+                                <Form.Control required placeholder="Enter Description" name="description" value={fullQuestion.question.description} onChange={handleChange} as="textarea" rows="3" data-testid="questionform-input-description" />
                             </Form.Group>
                         </Col>
                     </Row>
                     <Row className="justify-content-md-center">
                         <Col md="8">
                             <Form.Label><h4>Tag</h4></Form.Label>
-                            <Form.Control required as="select" name="tag" value={fullQuestion.question.tag} defaultValue="help" onChange={handleChange}>
+                            <Form.Control required as="select" name="tag" value={fullQuestion.question.tag} defaultValue="help" onChange={handleChange} data-testid="questionform-input-tag">
                                 <option label="Select Tag" hidden ></option>
                                 <option>Personal</option>
                                 <option>Relationship</option>
@@ -112,7 +120,7 @@ function QuestionForm() {
                         <Col md="8">
                             <br />
                             <Form.Label><h4>Deleted in</h4></Form.Label>
-                            <Form.Control required as="select" name="expiretime" value={fullQuestion.expiretime} onChange={handleChangeDeletionTime}>
+                            <Form.Control required as="select" name="expiretime" value={fullQuestion.expiretime} onChange={handleChangeDeletionTime} data-testid="questionform-input-deletetime">
                                 <option label="Select hours" hidden ></option>
                                 <option>3</option>
                                 <option>6</option>
@@ -126,7 +134,7 @@ function QuestionForm() {
                             <br />
                             <Form.Label><h4>Comments</h4></Form.Label>
                             <Form.Check type="checkbox" id="EnableComments">
-                                <Form.Check.Input type="checkbox" value={commentEnable} onChange={() => setCommentEnable(!commentEnable)} isValid />
+                                <Form.Check.Input type="checkbox" value={commentEnable} onChange={() => setCommentEnable(!commentEnable)} isValid data-testid="questionform-input-comments" />
                                  Enable
                             </Form.Check>
                         </Col>
@@ -151,6 +159,7 @@ function QuestionForm() {
                                                     className="poll"
                                                     value={poll[idx].poll}
                                                     onChange={handlePollChange}
+                                                    data-testid={idx}
                                                 />
                                             </div>
                                         </Form.Group>
@@ -161,7 +170,7 @@ function QuestionForm() {
                     </Row>
                     <Row className="justify-content-md-center">
                         <Col md="8">
-                            <Button variant="primary" type="submit">
+                            <Button variant="primary" type="submit" data-testid="questionform-input-submit">
                                 Post
                      </Button>
                         </Col>

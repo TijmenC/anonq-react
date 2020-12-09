@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../styling/Question.css'
 import { Row, Col } from 'react-bootstrap';
 import Poll from "./Poll";
@@ -18,9 +17,9 @@ function Question({ question, polls }) {
       }, [polls]);
 
 
-    const getPercentages = async (questionid) => {
+    const getPercentages = (questionid) => {
         setToggle(!toggle);
-        await PollService.GetPollPercentages(questionid).then((res) => {
+         PollService.GetPollPercentages(questionid).then((res) => {
             console.log(res);
             console.log(res.data);
             setPolls(res.data)
@@ -33,17 +32,17 @@ function Question({ question, polls }) {
 
     return ( 
         <div className="questionHead mx-auto">
-            <Row className="justify-content-md-left">
+            <Row className="justify-content-md-left" data-testid="question-label-title">
                 <Col md sm="8">
                     <b><h3>{question.title}</h3></b>
                 </Col>
             </Row>
-            <Row className="justify-content-md-left">
+            <Row className="justify-content-md-left" data-testid="question-label-description">
                 <Col md sm="12">
                     <b><h8>{question.description}</h8></b>
                 </Col>
             </Row>
-            <Row className="justify-content-md-left">
+            <Row className="justify-content-md-left" >
                 <br />
                 {viewpolls.map((viewpolls) => (
                     <Poll key={viewpolls.id} polls={viewpolls} percentages={getPercentages} toggle={toggle} />
