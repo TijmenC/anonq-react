@@ -28,7 +28,6 @@ function Poll({ polls, percentages, toggle }) {
                         <div data-testid="question-label-polls">
                         {polls.poll} 
                         </div>
-                        <br />
                         {polls.percentage}  
                         { toggle ? <PercentageText /> : null }
                     </Button>
