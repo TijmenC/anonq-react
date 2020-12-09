@@ -33,7 +33,13 @@ function HomePage(props) {
     };
 
     useEffect(() => {
-        GetQuestionData()
+        QuestionService.GetQuestionAndPolls(id).then((res) => {
+            setFullQuestion((prevState) => ({ ...prevState, question: res.data.question }));
+            setFullQuestion((prevState) => ({ ...prevState, poll: res.data.poll }));
+        })
+        CommentService.GetComment(id).then((res) => {
+            setComments(res.data)
+        })
     }, [id]);
 
     const GetQuestionData = () => {

@@ -1,5 +1,4 @@
 import http from "../common-api";
-import axios from "axios"
 
 const PostQuestion = (data) => {
     return http.httpdefault().post("/Question", data);
