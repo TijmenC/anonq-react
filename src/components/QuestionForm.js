@@ -61,6 +61,7 @@ function QuestionForm() {
         e.preventDefault()
     };
     useEffect(() => {
+
         if (rendered == true) {
             async function PostQuestion() {
                 let ApiResponse = await QuestionService.PostQuestion(fullQuestion)
@@ -72,6 +73,7 @@ function QuestionForm() {
             //Because I use fullQuestion to set the state outside the useEffect()
             // eslint-disable-next-line 
         }
+
     }, [fullQuestion.poll]);
 
 
