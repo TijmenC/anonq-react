@@ -6,10 +6,10 @@ import Question from "../src/components/Question"
 import "regenerator-runtime/runtime.js";
 
 
-import QuestionService from "../src/services/QuestionService";
+import QuestionService from "../src/services/questionservice";
 import Poll from '../src/components/Poll';
 
-jest.mock("../src/services/QuestionService");
+jest.mock("../src/services/questionservice");
 
 const mockQuestion = { title: 'Title', description: 'Description', tag: 'Relationship', commentsenabled: 'false' }
 const mockPolls = [{ poll: 'Answer 1'}, {poll: "Answer 2"}]
