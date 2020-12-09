@@ -24,12 +24,15 @@ function Poll({ polls, percentages, toggle, index}) {
         <div className="flex rounded container">
             <Row className="justify-content-md-left">
                 <Col>
-                    <Button disabled={toggle} variant="primary" size="lg" onClick={handleClick} block >
+                    <Button disabled={toggle} variant="primary" size="lg" onClick={handleClick} data-testid={"poll-button-vote" +  index} block >
                         <div data-testid={index}>   
                         {polls.poll} 
+                            {console.log(polls.percentage)}   
+                            <div data-testid={"poll-label-percentage" + index}>   
+                        {polls.percentage}
+                        { toggle ? <PercentageText />  : null }
                         </div>
-                        {polls.percentage}  
-                        { toggle ? <PercentageText /> : null }
+                        </div>
                     </Button>
                 </Col>
             </Row>
