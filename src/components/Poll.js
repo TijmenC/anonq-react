@@ -3,7 +3,7 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../styling/Question.css'
 import { Row, Col, Button, } from 'react-bootstrap';
 import PollService from "../Services/PollService"
-function Poll({ polls, percentages, toggle }) {
+function Poll({ polls, percentages, toggle, index}) {
 
     const handleClick = async (e) => {
         e.preventDefault()
@@ -25,7 +25,7 @@ function Poll({ polls, percentages, toggle }) {
             <Row className="justify-content-md-left">
                 <Col>
                     <Button disabled={toggle} variant="primary" size="lg" onClick={handleClick} block >
-                        <div data-testid="question-label-polls">
+                        <div data-testid={index}>   
                         {polls.poll} 
                         </div>
                         {polls.percentage}  

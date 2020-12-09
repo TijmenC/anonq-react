@@ -44,8 +44,8 @@ function Question({ question, polls }) {
             </Row>
             <Row className="justify-content-md-left" >
                 <br />
-                {viewpolls.map((viewpolls) => (
-                    <Poll key={viewpolls.id} polls={viewpolls} percentages={getPercentages} toggle={toggle} />
+                {viewpolls.map((viewpolls, idx) => (
+                    <Poll key={viewpolls.id} polls={viewpolls} percentages={getPercentages} toggle={toggle} index={idx}  />
                 ))}
             </Row>
     </div>

@@ -64,10 +64,15 @@ function QuestionForm() {
         if (rendered === true) {
             async function PostQuestion() {
                 let ApiResponse = await QuestionService.PostQuestion(fullQuestion)
+                if (ApiResponse.status === 201) {
                 console.log(ApiResponse)
                 Cookies.set('QuestionID', ApiResponse.data.id, { expires:  new Date(ApiResponse.data.deletionTime) })
                 let path = `/`;
                 history.push(path);  
+                }
+                else {
+                    console.log(ApiResponse.status)
+                }
             }
             PostQuestion();
         }

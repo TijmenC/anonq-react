@@ -16,7 +16,17 @@ describe("QuestionForm input test", () => {
 
        const mockFn = QuestionService.PostQuestion.mockImplementation(data => {
        console.log(data);
-       return {response: {status: 200}
+       return {response: {status: 201},
+       data: 
+       {
+        id: 10,
+        title: "Title",
+        description: "Dit is een test beschrijving",
+        image: null,
+        tag: "Relationship",
+        commentsEnabled: true,
+        deletionTime: "2020-12-03T12:58:53.6421923"
+       }
        }
        });
 
@@ -24,8 +34,8 @@ describe("QuestionForm input test", () => {
 
 
     const inputTitle = queryByTestId("questionform-input-title");
-    fireEvent.change(inputTitle, { target: { value: 'coolman' } });
-    expect(inputTitle.value).toBe("coolman");
+    fireEvent.change(inputTitle, { target: { value: 'Title' } });
+    expect(inputTitle.value).toBe("Title");
 
     const inputDescription = screen.getByTestId("questionform-input-description");
     fireEvent.change(inputDescription, { target: { value: 'Dit is een test beschrijving' } });
@@ -50,7 +60,7 @@ describe("QuestionForm input test", () => {
 
 
 
-    expect(mockFn).toHaveBeenCalledWith({question: { title: 'coolman', description: 'Dit is een test beschrijving', tag: 'Relationship', commentsenabled: false },
+    expect(mockFn).toHaveBeenCalledWith({question: { title: 'Title', description: 'Dit is een test beschrijving', tag: 'Relationship', commentsenabled: false },
     poll: [],
     expiretime: 12 });
   })
@@ -63,7 +73,17 @@ describe("QuestionForm input test", () => {
 
     const mockFn = QuestionService.PostQuestion.mockImplementation(data => {
     console.log(data);
-    return {response: {status: 200}
+    return {response: {status: 200},
+    data: 
+    {
+     id: 11,
+     title: "Title 2",
+     description: "Dit is een test beschrijving",
+     image: null,
+     tag: "Relationship",
+     commentsEnabled: true,
+     deletionTime: "2020-12-03T12:58:53.6421923"
+    }
     }
     });
 
@@ -71,8 +91,8 @@ const { queryByTestId, getByText } = render(<MemoryRouter initialEntries={["/"]}
 
 
  const inputTitle = queryByTestId("questionform-input-title");
- fireEvent.change(inputTitle, { target: { value: 'coolman2' } });
- expect(inputTitle.value).toBe("coolman2");
+ fireEvent.change(inputTitle, { target: { value: 'Title 2' } });
+ expect(inputTitle.value).toBe("Title 2");
 
  const inputDescription = screen.getByTestId("questionform-input-description");
  fireEvent.change(inputDescription, { target: { value: 'Dit is een test beschrijving' } });
@@ -110,7 +130,7 @@ const { queryByTestId, getByText } = render(<MemoryRouter initialEntries={["/"]}
 
 
 
- expect(mockFn).toHaveBeenCalledWith({question: { title: 'coolman2', description: 'Dit is een test beschrijving', tag: 'Relationship', commentsenabled: false },
+ expect(mockFn).toHaveBeenCalledWith({question: { title: 'Title 2', description: 'Dit is een test beschrijving', tag: 'Relationship', commentsenabled: false },
  poll: [ {poll: "Yes"}, {poll: "No"}],
  expiretime: 12 });
 })
