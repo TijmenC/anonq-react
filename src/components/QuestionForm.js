@@ -57,17 +57,14 @@ function QuestionForm() {
         e.preventDefault()
     };
     useEffect(() => {
-        async function PostQuestion(){
-            await QuestionService.PostQuestion(fullQuestion).then((res) => {
+            QuestionService.PostQuestion(fullQuestion).then((res) => {
             console.log(res);
             console.log(res.data);
             Cookies.set('QuestionID', res.data.id, { expires:  new Date(res.data.deletionTime) })
-        })
         let path = `/`; 
         history.push(path);
-    }
-    PostQuestion();
-    //Because I use fullQuestion to set the state outside the useEffect()
+    })
+    // Because I use fullQuestion to set the state outside the useEffect()
      // eslint-disable-next-line 
     }, [fullQuestion.poll]);
     
