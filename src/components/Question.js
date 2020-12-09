@@ -39,7 +39,7 @@ function Question({ question, polls }) {
             </Row>
             <Row className="justify-content-md-left" data-testid="question-label-description">
                 <Col md sm="12">
-                    <b><h8>{question.description}</h8></b>
+                    <b><h6>{question.description}</h6></b>
                 </Col>
             </Row>
             <Row className="justify-content-md-left" >
