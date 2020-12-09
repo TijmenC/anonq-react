@@ -24,8 +24,10 @@ function Poll({ polls, percentages, toggle }) {
         <div className="flex rounded container">
             <Row className="justify-content-md-left">
                 <Col>
-                    <Button disabled={toggle} variant="primary" size="lg" onClick={handleClick} block>
+                    <Button disabled={toggle} variant="primary" size="lg" onClick={handleClick} block >
+                        <div data-testid="question-label-polls">
                         {polls.poll} 
+                        </div>
                         <br />
                         {polls.percentage}  
                         { toggle ? <PercentageText /> : null }
