@@ -5,9 +5,9 @@ import { Row, Col, Button, } from 'react-bootstrap';
 import PollService from "../Services/PollService"
 function Poll({ polls, percentages, toggle, index}) {
 
-    const handleClick = async (e) => {
+    const handleClick = (e) => {
         e.preventDefault()
-        await PollService.PutPollsVotes(polls.id, polls).then((res) => {
+        PollService.PutPollsVotes(polls.id, polls).then((res) => {
             console.log(res);
             console.log(res.data);
         })
@@ -26,9 +26,9 @@ function Poll({ polls, percentages, toggle, index}) {
                 <Col>
                     <Button disabled={toggle} variant="primary" size="lg" onClick={handleClick} data-testid={"poll-button-vote" +  index} block >
                         <div data-testid={index}>   
-                        {polls.poll} 
-                            {console.log(polls.percentage)}   
-                            <div data-testid={"poll-label-percentage" + index}>   
+                        {polls.poll}  
+                            <div data-testid={"poll-label-percentage" + index}>  
+                            {console.log(polls)}   
                         {polls.percentage}
                         { toggle ? <PercentageText />  : null }
                         </div>
