@@ -28,7 +28,6 @@ function Poll({ polls, percentages, toggle, index}) {
                         <div data-testid={index}>   
                         {polls.poll}  
                             <div data-testid={"poll-label-percentage" + index}>  
-                            {console.log(polls)}   
                         {polls.percentage}
                         { toggle ? <PercentageText />  : null }
                         </div>

@@ -62,19 +62,15 @@ function QuestionForm() {
     };
     useEffect(() => {
         if (rendered === true) {
-            async function PostQuestion() {
-                let ApiResponse = await QuestionService.PostQuestion(fullQuestion)
-                if (ApiResponse.status === 201) {
-                console.log(ApiResponse)
-                Cookies.set('QuestionID', ApiResponse.data.id, { expires:  new Date(ApiResponse.data.deletionTime) })
+                QuestionService.PostQuestion(fullQuestion).then((res) => {
+                console.log(res.data)
+                Cookies.set('QuestionID', res.data.id, { expires:  new Date(res.data.deletionTime) })
                 let path = `/`;
                 history.push(path);  
-                }
-                else {
-                    console.log(ApiResponse.status)
-                }
-            }
-            PostQuestion();
+                })
+                .catch((error) => {
+                    console.log(error.response.data);
+                });
         }
          //Because I use fullQuestion to set the state outside the useEffect()
             // eslint-disable-next-line 
