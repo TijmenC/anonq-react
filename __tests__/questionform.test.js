@@ -28,22 +28,6 @@ describe("QuestionForm input test", () => {
       }
     }));
 
-    // const mockFn = QuestionService.PostQuestion.mockImplementation(data => {
-    //   console.log(data);
-    //   return {
-    //     response: { status: 201 },
-    //     data:
-    //     {
-    //       id: 10,
-    //       title: "Title",
-    //       description: "Dit is een test beschrijving",
-    //       image: null,
-    //       tag: "Relationship",
-    //       commentsEnabled: true,
-    //       deletionTime: "2020-12-03T12:58:53.6421923"
-    //     }
-    //   }
-    // });
 
     const { queryByTestId } = render(<MemoryRouter initialEntries={["/"]}><QuestionForm /></MemoryRouter>);
 
@@ -104,21 +88,7 @@ describe("QuestionForm input test", () => {
         deletionTime: "2020-12-03T12:58:53.6421923"
       }
     }));
-    // const mockFn = QuestionService.PostQuestion.mockImplementation(data => {
-    // console.log(data);
-    // return {response: {status: 200},
-    // data: 
-    // {
-    //  id: 11,
-    //  title: "Title 2",
-    //  description: "Dit is een test beschrijving",
-    //  image: null,
-    //  tag: "Relationship",
-    //  commentsEnabled: true,
-    //  deletionTime: "2020-12-03T12:58:53.6421923"
-    // }
-    // }
-    // });
+   
 
     const { queryByTestId, getByText } = render(<MemoryRouter initialEntries={["/"]}><QuestionForm /></MemoryRouter>);
 
