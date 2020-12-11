@@ -20,7 +20,9 @@ jest.mock("axios");
 
 
 const mockQuestion = { title: 'Title', description: 'Description', tag: 'Relationship', commentsenabled: 'false' }
-const mockPolls = [{ id: 27, questionId: 24, poll: 'Answer 1', votes: 0, percentage: "" }, { id: 28, questionId: 24, poll: 'Answer 2', votes: 2, percentage: "" }]
+const mockPolls = [{ id: 27, questionId: 24, poll: 'Answer 1', votes: 0 }, { id: 28, questionId: 24, poll: 'Answer 2', votes: 2 }]
+const mockPollsPercentages = [{ id: 27, questionId: 24, poll: 'Answer 1', votes: 0, percentage: "0" }, { id: 28, questionId: 24, poll: 'Answer 2', votes: 2, percentage: "100" }]
+
 
 describe("Question rendering test", () => {
     it.only('Test Question component renders', () => {
@@ -37,14 +39,8 @@ describe("Question rendering test", () => {
 
     })
 
-    it.only('Test Question component renders + Poll percentages (When clicked)', () => {
+    it.only('Test Question component renders + % renders (When clicked)', () => {
         const { getByTestId, getAllByTestId, getByText } = render(<MemoryRouter initialEntries={["/"]}><Question question={mockQuestion} polls={mockPolls} /></MemoryRouter>);
-        //  PollsService.PutPollsVotes.mockImplementation(data => {
-        //     console.log(data);
-        //     return {
-        //         response: { status: 200 }
-        //     }
-        // });
         act(() => {
             PollService.GetPollPercentages.mockImplementation(() => Promise.resolve({
                 response: { status: 200 },
@@ -94,6 +90,24 @@ describe("Question rendering test", () => {
        
          const labelPercentage = getByTestId("poll-label-percentage0");
          expect(labelPercentage.textContent).toBe("%")
+    })
+    it.only('Polls percentages render when clicked', () => {
+        const { getByTestId, getAllByTestId, getByText } = render(<MemoryRouter initialEntries={["/"]}><Poll polls={mockPollsPercentages[0]} toggle={true} index={0} /></MemoryRouter>);
+        act(() => {
+            PollService.PutPollsVotes.mockImplementation(() => Promise.resolve({
+                response: { status: 200 },
+                data:
+                {
+                    poll: "changed"
+                }
+            }));
+        })
+    
+         const labelPercentage = getByTestId("poll-label-percentage0");
+         expect(labelPercentage.textContent).toBe("0%")
+         render(<MemoryRouter initialEntries={["/"]}><Poll polls={mockPollsPercentages[1]} toggle={true} index={1} /></MemoryRouter>);
+         const labelPercentage2 = getByTestId("poll-label-percentage1");
+         expect(labelPercentage2.textContent).toBe("100%")
     })
     
 });
