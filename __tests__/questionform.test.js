@@ -73,8 +73,6 @@ describe("QuestionForm input test", () => {
   it('Test QuestionForm input renders + polls', () => {
 
 
-
-
     const mockFn = QuestionService.PostQuestion.mockImplementation(() => Promise.resolve({
       response: { status: 200 },
       data:

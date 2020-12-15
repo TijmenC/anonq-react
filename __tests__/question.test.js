@@ -3,6 +3,7 @@ import * as axios from "axios";
 import { MemoryRouter } from 'react-router-dom';
 import React from "react"
 import Question from "../src/components/Question"
+import "regenerator-runtime/runtime.js";
 
 
 
@@ -39,8 +40,8 @@ describe("Question rendering test", () => {
 
     })
 
-    it.only('Test Question component renders + % renders (When clicked)', () => {
-        const { getByTestId, getAllByTestId, getByText } = render(<MemoryRouter initialEntries={["/"]}><Question question={mockQuestion} polls={mockPolls} /></MemoryRouter>);
+    it.only('Test Question component renders + % renders (When clicked)', async () => {
+        const { getByTestId } = render(<MemoryRouter initialEntries={["/"]}><Question question={mockQuestion} polls={mockPolls} /></MemoryRouter>);
         act(() => {
             PollService.GetPollPercentages.mockImplementation(() => Promise.resolve({
                 response: { status: 200 },
@@ -83,16 +84,20 @@ describe("Question rendering test", () => {
         expect(labelSecondPoll.textContent).toBe(mockPolls[1].poll)
 
         const voteButton = getByTestId("poll-button-vote0")
-        act(() => {
-            fireEvent.click(voteButton)
+
+        await act(async () => {
+            await fireEvent.click(voteButton)
         });
 
        
          const labelPercentage = getByTestId("poll-label-percentage0");
-         expect(labelPercentage.textContent).toBe("%")
+         expect(labelPercentage.textContent).toBe("0%")
+         const labelPercentage2 = getByTestId("poll-label-percentage1");
+         expect(labelPercentage2.textContent).toBe("100%")
     })
+    
     it.only('Polls percentages render when clicked', () => {
-        const { getByTestId, getAllByTestId, getByText } = render(<MemoryRouter initialEntries={["/"]}><Poll polls={mockPollsPercentages[0]} toggle={true} index={0} /></MemoryRouter>);
+        const { getByTestId } = render(<MemoryRouter initialEntries={["/"]}><Poll polls={mockPollsPercentages[0]} toggle={true} index={0} /></MemoryRouter>);
         act(() => {
             PollService.PutPollsVotes.mockImplementation(() => Promise.resolve({
                 response: { status: 200 },

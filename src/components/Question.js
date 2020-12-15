@@ -19,7 +19,6 @@ function Question({ question, polls }) {
 
     const getPercentages = (questionid) => {
         setToggle(!toggle);
-        console.log(questionid)
          PollService.GetPollPercentages(questionid).then((res) => {
             console.log(res);
             console.log(res.data);
