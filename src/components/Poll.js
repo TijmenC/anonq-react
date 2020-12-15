@@ -10,11 +10,11 @@ function Poll({ polls, percentages, toggle, index}) {
         PollService.PutPollsVotes(polls.id, polls).then((res) => {
             console.log(res);
             console.log(res.data);
+            percentages(polls.questionId)
         })
         .catch((error) => {
             console.log(error.response.data);
         });
-        percentages(polls.questionId)
     };
     const PercentageText = () => (
        <b>%</b>
