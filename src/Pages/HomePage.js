@@ -18,7 +18,9 @@ function HomePage(props) {
     );
     const [comments, setComments] = useState([]);
 
-    
+    useEffect(() => {
+        handleChange()
+    }, []);
     useEffect(() => {
         setID(props.match.params.id);
     }, [props.match.params.id]);
