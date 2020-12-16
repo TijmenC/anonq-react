@@ -13,14 +13,14 @@ function Comment({ sentcomments }) {
                 </Col>
                 <Col md="1">
 
-                    <b>  <div data-testid="question-label-comment">Anonymous</div></b>
+                    <b>  <div data-testid="question-label-title">Anonymous</div></b>
 
                 </Col>
             </Row>
             <br />
             <Row className="justify-content-md-left">
                 <Col md sm="12">
-                        <h6 data-testid="question-label-title">
+                        <h6 data-testid="question-label-comment">
                             {sentcomments.text}
                         </h6>
                 </Col>

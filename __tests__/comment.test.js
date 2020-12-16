@@ -12,9 +12,9 @@ describe("Comment rendering test", () => {
 
        const { queryByTestId } = render(<Comment sentcomments={questioninput} />);
 
-        const commentLabel = queryByTestId("question-label-title");
+        const commentLabel = queryByTestId("question-label-comment");
         expect(commentLabel.textContent).toBe("comment");
-        const headLabel = queryByTestId("question-label-comment");
+        const headLabel = queryByTestId("question-label-title");
         expect(headLabel.innerHTML).toBe("Anonymous");
   })
 });
