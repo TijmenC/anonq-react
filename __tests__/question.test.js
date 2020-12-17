@@ -86,7 +86,7 @@ describe("Question rendering test", () => {
         const voteButton = getByTestId("poll-button-vote0")
 
         await act(async () => {
-            await fireEvent.click(voteButton)
+         fireEvent.click(voteButton)
         });
 
        
