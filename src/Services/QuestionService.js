@@ -1,7 +1,7 @@
 import http from "../common-api";
 
 const PostQuestion = (data) => {
-    return http.httpdefault().post("/Question", data);
+    return http.httpdefault().post("/Question/QuestionAndPoll", data);
   };
   
 const GetQuestionAndPolls = (id, data) => {
