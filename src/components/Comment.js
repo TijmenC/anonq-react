@@ -9,7 +9,7 @@ function Comment({ sentcomments }) {
         <div className="rounded container">
             <Row className="justify-content-md-left align-items-center">
                 <Col md="1">
-                    <img src='/images/logo.png' alt="error" width="100" height="50" />
+                    <img src='/images/anonymouscomment.svg' alt="error" width="100" height="50" />
                 </Col>
                 <Col md="1">
 

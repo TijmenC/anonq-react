@@ -15,7 +15,7 @@ function Navigationbar() {
       <Nav className="container-fluid">
         <Navbar.Brand>
           <Link to="/">
-            <img src='/images/logo.png' alt="error" width="100" height="50" className="d-inline-block align-top" />
+            <img src='/images/anonymous.svg' alt="error" width="100" height="50" className="d-inline-block align-top" />
           </Link>
         AnonQ
       </Navbar.Brand>

@@ -15,9 +15,9 @@ function HomeButtons({randomid}) {
                         <figure>
                             <Link to="/" >
                                 <Figure.Image
-                                    width={50}
-                                    height={50}
-                                    src='/images/report.png'
+                                    width={40}
+                                    height={40}
+                                    src='/images/flags.svg'
                                 />
                             </Link>
                             <figcaption class="figure-caption text-middle">Report</figcaption>
@@ -29,9 +29,9 @@ function HomeButtons({randomid}) {
                         <figure>
                             <Link to="/" onClick={handleChange}>
                                 <Figure.Image
-                                    width={50}
-                                    height={50}
-                                     src='/images/skip.png'
+                                    width={40}
+                                    height={40}
+                                     src='/images/right-arrow.svg'
                                 />
                             </Link>
                             <figcaption class="figure-caption text-middle">Skip</figcaption>
