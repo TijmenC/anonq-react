@@ -7,9 +7,9 @@ import {
 import Cookies from 'js-cookie'
 function SavedQuestions() {
   const [togglecookies, setToggleCookies] = useState(false)
-  const [questioncookies, setQuestioncookies] = useState(Cookies.get)
+  const [questioncookies, setQuestionCookies] = useState(Cookies.get)
   const getCookies = () => {
-    setQuestioncookies(Cookies.get())
+    setQuestionCookies(Cookies.get())
     if (questioncookies.QuestionID != null) {
       setToggleCookies(true)
     }

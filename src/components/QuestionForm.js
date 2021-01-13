@@ -72,8 +72,8 @@ function QuestionForm() {
                     console.log(error.response.data);
                 });
         }
-         //Because I use fullQuestion to set the state outside the useEffect()
-            // eslint-disable-next-line 
+         //Because I use fullQuestion to set the state outside the useEffect() and otherwise the state isn't set in time.
+        // eslint-disable-next-line 
     }, [fullQuestion.poll]);
 
 
